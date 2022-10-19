@@ -1,0 +1,5 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ªÑôúÿÿÿÿ
+>	java:S108"")Either remove or fill this block of code.(¨šþµ
+?
+java:S1128")Remove this unused import 'java.io.File'.(†Ð¥Å
