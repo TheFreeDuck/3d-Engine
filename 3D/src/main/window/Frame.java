@@ -17,7 +17,7 @@ public class Frame extends JFrame {
     public Frame() {
 
         try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream((Main.class.getClassLoader().getResource("takagi.wav")));
+            AudioInputStream audio = AudioSystem.getAudioInputStream((Objects.requireNonNull(Main.class.getClassLoader().getResource("takagi.wav"))));
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
