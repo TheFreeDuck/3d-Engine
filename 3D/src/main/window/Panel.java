@@ -25,7 +25,7 @@ public class Panel extends JPanel {
     public Panel() {
         this.keyInput = new KeyInput();
         gameLoop = new GameLoop(this, keyInput);
-        this.setBackground(Color.black);
+        this.setBackground(Color.orange);
         this.setPreferredSize(new Dimension(width, height));
         this.addKeyListener(keyInput);
         this.setFocusable(true);
