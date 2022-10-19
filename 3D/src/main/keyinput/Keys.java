@@ -9,6 +9,7 @@ public enum Keys {
     S(false, KeyEvent.VK_S),
     E(false, KeyEvent.VK_E),
     Q(false, KeyEvent.VK_Q),
+    R(false, KeyEvent.VK_R),
     UP(false, KeyEvent.VK_UP),
     DOWN(false, KeyEvent.VK_DOWN),
     RIGHT(false, KeyEvent.VK_RIGHT),

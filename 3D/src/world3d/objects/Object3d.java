@@ -14,5 +14,21 @@ public abstract class Object3d {
         velocity = new Vector(0,0,0);
     }
 
+    public Point3d getPosition() {
+        return position;
+    }
+
+    public void setPosition(Point3d position) {
+        this.position = position;
+    }
+
+    public Orientation getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(Orientation orientation) {
+        this.orientation = orientation;
+    }
+
     protected abstract void update();
 }

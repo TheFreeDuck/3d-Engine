@@ -79,6 +79,8 @@ public class Player extends Entity {
         }
     }
 
+
+
     public Camera getCamera() {
         return camera;
     }
