@@ -8,15 +8,19 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 import java.util.Objects;
 
 public class Frame extends JFrame {
     private Panel panel;
 
-    public Frame() {
+    public Frame() {//Main.class.getClassLoader().getResourceAsStream("takagi.wav")
 
         try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream(((Main.class.getClassLoader().getResourceAsStream("takagi.wav"))));
+            InputStream audioSrc = getClass().getClassLoader().getResourceAsStream("takagi.wav");
+            InputStream bufferedIn = new BufferedInputStream(audioSrc);
+            AudioInputStream audio = AudioSystem.getAudioInputStream(bufferedIn);
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
