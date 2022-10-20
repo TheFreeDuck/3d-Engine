@@ -22,3 +22,9 @@ body {
     margin: auto;
     cursor: pointer;
 }
+
+.center {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
