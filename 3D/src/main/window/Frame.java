@@ -8,7 +8,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.util.Objects;
 
 public class Frame extends JFrame {
@@ -17,7 +16,7 @@ public class Frame extends JFrame {
     public Frame() {
 
         try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream((Objects.requireNonNull(Main.class.getClassLoader().getResource("takagi.wav"))));
+            AudioInputStream audio = AudioSystem.getAudioInputStream((Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream("takagi.wav"))));
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
@@ -29,7 +28,7 @@ public class Frame extends JFrame {
 
         this.setTitle("3D Engine");
         try {
-            Image icon = ImageIO.read(Objects.requireNonNull(Main.class.getClassLoader().getResource("icon.png")));
+            Image icon = ImageIO.read(Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream("icon.png")));
             this.setIconImage(icon);
         } catch (Exception ignored) {}
 
