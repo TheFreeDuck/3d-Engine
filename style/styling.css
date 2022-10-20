@@ -45,3 +45,8 @@ body {
     border: 1px solid white;
     margin-left: 10px;
 }
+
+#crazyMode {
+    font-weight: bold;
+    cursor: pointer;
+}
