@@ -1,0 +1,11 @@
+
+‹
+java:S1319C"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(£¸ùèýÿÿÿÿ
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(§ä˜ç
+:
+java:S1659"Declare "h" on a separate line.(Œºà¡ùÿÿÿÿ
+\
+java:S1659"ADeclare "vtx2" and all following declarations on a separate line.(çèÀÂÿÿÿÿÿ
+;
+java:S1659" Declare "v2" on a separate line.(™·¨½ûÿÿÿÿ
+V	java:S125P"<This block of commented-out lines of code should be removed.(ØÕÉúÿÿÿÿ
