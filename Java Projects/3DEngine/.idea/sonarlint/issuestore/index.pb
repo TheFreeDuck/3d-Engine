@@ -15,3 +15,7 @@ w
 G.idea/sonarlint/issuestore/1/d/1d223b077a184a026db91c3af9e70485d20fa746,2\f\2fc9088fdc14eed1dfeb9beeeecf48b98f9e9081
 w
 G.idea/sonarlint/issuestore/f/b/fb03963296ed3b8754c6912aec34d506a9fdb531,1\5\15bf902e46466bbec928f6f842c62beaf9f6a816
+E
+3D/src/main/Main.java,2\7\2755c1a78f90b28058f396576b849e4f7fb6d58b
+M
+3D/src/main/window/Frame.java,8\f\8f6f66feee033bb4a849cd2efa5e169825bb8354
