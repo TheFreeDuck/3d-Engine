@@ -16,13 +16,13 @@ public class Frame extends JFrame {
     public Frame() {
 
         try{
-            AudioInputStream audio = AudioSystem.getAudioInputStream((Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream("takagi.wav"))));
+            AudioInputStream audio = AudioSystem.getAudioInputStream(((Main.class.getClassLoader().getResourceAsStream("takagi.wav"))));
             Clip clip = AudioSystem.getClip();
             clip.open(audio);
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
         }catch(Exception e){
-            System.out.println(e + "高木 has failed");
+            System.out.println(e);
         }
 
 
