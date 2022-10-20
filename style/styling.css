@@ -18,13 +18,24 @@ body {
 
 .button {
     padding-top: 10px;
-    display: block;
-    margin: auto;
     cursor: pointer;
+    padding-bottom: 10px;
 }
 
 .center {
     display: block;
     margin: auto;
     text-align: center;
+}
+
+.left {
+    display: block;
+}
+
+.container {
+    width: 500px;
+    padding: 10px;
+    display: inline-block;
+    border: 2px solid white;
+    margin-left: 10px;
 }
