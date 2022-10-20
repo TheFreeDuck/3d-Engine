@@ -22,7 +22,7 @@ public class Frame extends JFrame {
             clip.loop(Clip.LOOP_CONTINUOUSLY);
             clip.start();
         }catch(Exception e){
-            System.out.println(e);
+            JOptionPane.showMessageDialog(this,e);
         }
 
 
