@@ -4,3 +4,21 @@
     margin: 0;
     font-family: 'Roboto', sans-serif;
 }
+
+body {
+    background-color: #181818;
+    color: #e8e6e3;
+  }
+
+/*div.button::before {
+    content:url(resources/media/download-button.png);
+    width: auto;
+    height: auto;
+ }​*/
+
+.button {
+    padding-top: 10px;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+}
