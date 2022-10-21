@@ -1,14 +1,16 @@
 package main.game;
 
 import main.keyinput.Keys;
-import world3d.objects.Orientation;
-import world3d.objects.entity.Player;
-import main.window.Panel;
 import math.Point3d;
 import math.Vector;
 import math.Vertex;
+import world3d.objects.Orientation;
+import world3d.objects.entity.Player;
 import world3d.objects.shapes.Cuboid;
+import main.window.Frame;
+import main.window.Panel;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -19,12 +21,14 @@ public class World {
     public final static double GRAVITY = 0.001;
     private Player player;
     private final Objects objects;
-    main.window.Panel panel;
+    private Frame frame;
+    private Panel panel;
 
 
 
-    public World(Panel panel) {
+    public World(Frame frame,Panel panel) {
         this.panel = panel;
+        this.frame = frame;
         player = new Player(new Point3d(-10, 0, 0),new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)),panel);
         objects = new Objects();
         objects.addCuboid((new Cuboid(new Point3d(2, 0, 0), 100, 0, 100)));
@@ -38,11 +42,13 @@ public class World {
         for (int i = 2; i < 102; i++) {
             objects.addCuboid(new Cuboid(new Point3d(i,-10,0),10,0,1));
         }
+        JOptionPane.showMessageDialog(null,"Press F to toggle fullscreen","Updatefff",JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void update() {
         objects.update();
         player.update();
+        System.out.println(Keys.F.isPressed());
     }
 
     public void draw(Graphics g) {
@@ -54,6 +60,10 @@ public class World {
         if(Keys.R.isPressed()){
             player.setPosition(new Point3d(0,0,0));
             player.setOrientation(new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)));
+        }
+        if(Keys.F.isPressed()){
+                frame.setFullscreen(!frame.isFullscreen());
+                Keys.F.setPressed(false);
         }
     }
 

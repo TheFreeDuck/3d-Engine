@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 
 public enum Keys {
     A(false, KeyEvent.VK_A),
+    F(false, KeyEvent.VK_F),
     D(false, KeyEvent.VK_D),
     W(false, KeyEvent.VK_W),
     S(false, KeyEvent.VK_S),
