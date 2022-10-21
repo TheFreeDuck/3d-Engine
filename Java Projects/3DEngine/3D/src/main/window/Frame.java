@@ -32,7 +32,7 @@ public class Frame extends JFrame {
 
         this.setTitle("3D Engine");
         try {
-            Image icon = ImageIO.read(Objects.requireNonNull(Main.class.getClassLoader().getResourceAsStream("icon.png")));
+            Image icon = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("icon.png")));
             this.setIconImage(icon);
         } catch (Exception ignored) {}
 
