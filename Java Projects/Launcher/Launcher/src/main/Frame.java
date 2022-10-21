@@ -13,6 +13,7 @@ import java.nio.channels.ReadableByteChannel;
 public class Frame extends JFrame {
     private JPanel panel;
     private JButton downloadAndRunButton;
+    private JTextField a3DEngineLauncherTextField;
 
     public Frame(){
         setContentPane(panel);
@@ -32,7 +33,7 @@ public class Frame extends JFrame {
                     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                     Desktop.getDesktop().open(new File(System.getProperty("user.home") + "/Downloads/downloaded.jar"));
                 }catch(Exception er){
-                    System.out.println(er);
+                    JOptionPane.showMessageDialog(null, "Something went wrong\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
