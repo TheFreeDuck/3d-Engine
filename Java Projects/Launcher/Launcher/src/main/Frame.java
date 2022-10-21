@@ -13,16 +13,16 @@ import java.nio.channels.ReadableByteChannel;
 
 public class Frame extends JFrame {
     private JPanel panel;
-    private JCheckBox checkBox1;
-    private JCheckBox checkBox2;
     private JButton checkForUpdatesButton;
     private JButton runButton;
     private JButton downloadAndRunButton;
+    private JRadioButton engine;
+    private JRadioButton virus;
 
     public Frame(){
         setContentPane(panel);
         setTitle("Launcher");
-        setSize(400,400);
+        setSize((int)(Toolkit.getDefaultToolkit().getScreenSize().width/1.3),(int)(Toolkit.getDefaultToolkit().getScreenSize().height/1.3));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -47,6 +47,22 @@ public class Frame extends JFrame {
                     Desktop.getDesktop().open(new File(System.getProperty("user.home") + "/Downloads/downloaded.jar"));
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
+                }
+            }
+        });
+        engine.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(engine.isSelected()){
+                    virus.setSelected(false);
+                }
+            }
+        });
+        virus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(virus.isSelected()){
+                    engine.setSelected(false);
                 }
             }
         });
