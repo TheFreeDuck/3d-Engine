@@ -61,8 +61,8 @@ public class World {
             player.setOrientation(new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)));
         }
         if(Keys.F.isPressed()){
-                frame.setFullscreen(!frame.isFullscreen());
                 Keys.F.setPressed(false);
+                frame.setFullscreen(!frame.isFullscreen());
         }
     }
 

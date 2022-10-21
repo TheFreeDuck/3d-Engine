@@ -53,17 +53,20 @@ public class Frame extends JFrame {
     }
 
     public void setFullscreen(Boolean fullscreen){
-        this.fullscreen = fullscreen;
-        dispose();
-        setUndecorated(fullscreen);
-        if(fullscreen){
-            setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
-        }else{
-            pack();
-            setLocationRelativeTo(null);
+        if(!this.fullscreen == fullscreen){
+            this.fullscreen = fullscreen;
+            dispose();
+            setUndecorated(fullscreen);
+            if(fullscreen){
+                setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
+            }else{
+                pack();
+                setLocationRelativeTo(null);
+            }
+
+            setVisible(true);
         }
 
-        setVisible(true);
     }
 
     public Panel getPanel() {

@@ -6,14 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
 public class Frame extends JFrame {
     private JPanel panel;
+    private JCheckBox checkBox1;
+    private JCheckBox checkBox2;
+    private JButton checkForUpdatesButton;
+    private JButton runButton;
     private JButton downloadAndRunButton;
-    private JTextField a3DEngineLauncherTextField;
 
     public Frame(){
         setContentPane(panel);
@@ -31,9 +35,18 @@ public class Frame extends JFrame {
                     ReadableByteChannel rbc = Channels.newChannel(url.openStream());
                     FileOutputStream fos = new FileOutputStream(System.getProperty("user.home") + "/Downloads/downloaded.jar");
                     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-                    Desktop.getDesktop().open(new File(System.getProperty("user.home") + "/Downloads/downloaded.jar"));
                 }catch(Exception er){
                     JOptionPane.showMessageDialog(null, "Something went wrong\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        runButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Desktop.getDesktop().open(new File(System.getProperty("user.home") + "/Downloads/downloaded.jar"));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
             }
         });
