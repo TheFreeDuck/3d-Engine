@@ -25,7 +25,6 @@ public class Player extends Entity {
         camera.setOrientation(orientation);
         camera.setObserver(position);
         camera.update();
-        System.out.println(orientation.getForwardDirection().scalar() +" "+ orientation.getUpDirection().scalar() +" "+ orientation.getRightDirection().scalar());
     }
 
     public void keyEvents() {
