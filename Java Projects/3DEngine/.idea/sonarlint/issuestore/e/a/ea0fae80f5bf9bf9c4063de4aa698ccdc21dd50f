@@ -1,0 +1,9 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(‹ñÔÿÿÿÿÿ
+Q	java:S125L"<This block of commented-out lines of code should be removed.(¢ë¢ğ
+U
+java:S1161f":Add the "@Override" annotation above this method signature(ğ®§øÿÿÿÿ
+O
+java:S1161j":Add the "@Override" annotation above this method signature(•¬÷T
+C
+java:S1068"-Remove this unused "moveSpeed" private field.(ÚÅê¶

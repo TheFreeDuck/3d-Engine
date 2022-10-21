@@ -1,0 +1,17 @@
+
+W
+java:S2184"BCast one of the operands of this division operation to a "double".(²Óèj
+J
+java:S2387"/"height" is the name of a field in "Component".(ð·…²ûÿÿÿÿ
+I
+java:S2387"."width" is the name of a field in "Component".(éìº›ùÿÿÿÿ
+6
+java:S1170"!Make this final field static too.(²Óèj
+<
+java:S1170"!Make this final field static too.(éìº›ùÿÿÿÿ
+E
+java:S1948"*Make "gameLoop" transient or serializable.(¨Õ¹úüÿÿÿÿ
+@
+java:S1948"*Make "keyInput" transient or serializable.(‹ŸõŸ
+?
+java:S1068")Remove this unused "frame" private field.(«„œÇ
