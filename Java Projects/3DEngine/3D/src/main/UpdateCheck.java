@@ -36,7 +36,7 @@ public class UpdateCheck {
                 }else{
                     java.nio.file.Files.delete(temp.toPath());
                     downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
-                    Desktop.getDesktop().open(new File(System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())));
+                    Desktop.getDesktop().open(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
                 }
             }
             java.nio.file.Files.delete(temp.toPath());
