@@ -22,7 +22,7 @@ public class UpdateCheck {
         try {
             String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
             downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/temp.jar");
-            String serverHash = getHash(System.getProperty("user.home") + "/Downloads/test.jar");
+            String serverHash = getHash(System.getProperty("user.home") + "/Downloads/temp.jar");
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
             temp.delete();
             JOptionPane.showMessageDialog(null,new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
