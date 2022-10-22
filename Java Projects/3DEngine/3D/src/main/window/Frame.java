@@ -18,7 +18,7 @@ public class Frame extends JFrame {
 
     public Frame() {
 
-        try{
+        /*try{
             InputStream audioSrc = getClass().getClassLoader().getResourceAsStream("takagi.wav");
             InputStream bufferedIn = new BufferedInputStream(audioSrc);
             AudioInputStream audio = AudioSystem.getAudioInputStream(bufferedIn);
@@ -28,7 +28,7 @@ public class Frame extends JFrame {
             clip.start();
         }catch(Exception e){
             JOptionPane.showMessageDialog(this,e);
-        }
+        }*/
 
 
         this.setTitle("3D Engine");
