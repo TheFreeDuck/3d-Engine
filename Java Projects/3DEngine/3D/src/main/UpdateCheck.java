@@ -20,7 +20,7 @@ public class UpdateCheck {
 
     public UpdateCheck(){
         try {
-            String localHash = getHash(System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
+            String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
             downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/temp.jar");
             String serverHash = getHash(System.getProperty("user.home") + "/Downloads/test.jar");
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
@@ -37,7 +37,7 @@ public class UpdateCheck {
                     frame.startGame();
                 }else{
                     downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/updatedFile.jar");
-                    Desktop.getDesktop().open(new File(System.getProperty("user.dir") + "/" + new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName()));
+                    Desktop.getDesktop().open(new File(System.getProperty("user.dir")+"/updatedFile.jar"));
                 }
             }
 
