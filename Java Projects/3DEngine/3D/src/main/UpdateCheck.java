@@ -4,15 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.sql.SQLOutput;
 import java.util.Arrays;
 import main.window.Frame;
 
@@ -20,10 +17,10 @@ public class UpdateCheck {
 
     public UpdateCheck(){
         try {
-            String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
-            downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/temp.jar");
-            String serverHash = getHash(System.getProperty("user.home") + "/Downloads/temp.jar");
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
+            String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
+            downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",temp.getPath());
+            String serverHash = getHash(temp.getPath().toString());
             temp.delete();
             if(localHash.equals(serverHash)){
                 Frame frame = new Frame();
@@ -34,7 +31,7 @@ public class UpdateCheck {
                     Frame frame = new Frame();
                     frame.startGame();
                 }else{
-                    downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/updatedFile.jar");
+                    downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
                     Desktop.getDesktop().open(new File(System.getProperty("user.dir")+"/updatedFile.jar"));
                 }
             }
