@@ -20,9 +20,8 @@ public class UpdateCheck {
             String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
             downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",temp.getPath());
-            String serverHash = getHash(temp.getPath().toString());
-
-
+            String serverHash = getHash(temp.getPath());
+            java.nio.file.Files.delete(temp.toPath());
             if(localHash.equals(serverHash)){
                 Frame frame = new Frame();
                 frame.startGame();
@@ -36,7 +35,6 @@ public class UpdateCheck {
                     Desktop.getDesktop().open(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
                 }
             }
-            java.nio.file.Files.delete(temp.toPath());
 
         }catch(Exception err){
             JOptionPane.showMessageDialog(null, "error in\n"+err,"ERROR",JOptionPane.ERROR_MESSAGE);
@@ -61,6 +59,8 @@ public class UpdateCheck {
             ReadableByteChannel rbc = Channels.newChannel(url.openStream());
             FileOutputStream fos = new FileOutputStream(dest);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+            rbc.close();
+            fos.close();
         }catch(Exception er){
             JOptionPane.showMessageDialog(null, "Error downloading file:" +src + "\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
