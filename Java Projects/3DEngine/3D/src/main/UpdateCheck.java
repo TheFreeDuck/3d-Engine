@@ -44,7 +44,7 @@ public class UpdateCheck {
     private String getHash(String path){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(Files.readAllBytes(Paths.get(java.net.URLDecoder.decode(path))));
+            md.update(Files.readAllBytes(Paths.get(path)));
             byte[] digest = md.digest();
             return (Arrays.toString(digest));
         }catch(Exception er) {
