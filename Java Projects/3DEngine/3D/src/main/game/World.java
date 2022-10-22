@@ -42,7 +42,7 @@ public class World {
         for (int i = 2; i < 102; i++) {
             objects.addCuboid(new Cuboid(new Point3d(i,-10,0),10,0,1));
         }
-        JOptionPane.showMessageDialog(null,"Press F to toggle fullscreen\nPress Space to move up\nPress shift to move down\nuse arrow keys to rotate","KeyBinds",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,"Press F to toggle fullscreen\nPress Space to move up\nPress shift to move down\nuse arrow keys to rotate(kinda broken)","KeyBinds",JOptionPane.INFORMATION_MESSAGE);
     }
 
     public void update() {
