@@ -28,7 +28,14 @@ public class UpdateCheck {
                 Frame frame = new Frame();
                 frame.startGame();
             }else{
-                JOptionPane.showMessageDialog(null,"old version");
+                int choice = JOptionPane.showConfirmDialog(null,"Update available!\nWould you like to update?","Update Available!",JOptionPane.INFORMATION_MESSAGE);
+                if(choice!=0){
+                    Frame frame = new Frame();
+                    frame.startGame();
+                }else{
+                    downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/updatedFile.jar");
+                    Desktop.getDesktop().open(new File(System.getProperty("user.dir")+"/updatedFile.jar"));
+                }
             }
 
         }catch(Exception er){
