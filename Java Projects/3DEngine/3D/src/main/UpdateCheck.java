@@ -5,6 +5,7 @@ import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URL;
+import java.net.URLDecoder;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
@@ -45,7 +46,7 @@ public class UpdateCheck {
     private String getHash(String path){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(Files.readAllBytes(Paths.get(java.net.URLDecoder.decode(path))));
+            md.update(Files.readAllBytes(Paths.get(URLDecoder.decode(path,"UTF-8"))));
             byte[] digest = md.digest();
             return (Arrays.toString(digest));
         }catch(Exception er) {
