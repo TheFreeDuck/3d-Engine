@@ -17,11 +17,12 @@ public class UpdateCheck {
 
     public UpdateCheck(){
         try {
-            File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
             String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
+            File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
             downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",temp.getPath());
             String serverHash = getHash(temp.getPath().toString());
-            temp.delete();
+
+
             if(localHash.equals(serverHash)){
                 Frame frame = new Frame();
                 frame.startGame();
@@ -32,9 +33,10 @@ public class UpdateCheck {
                     frame.startGame();
                 }else{
                     downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
-                    Desktop.getDesktop().open(new File(System.getProperty("user.dir")+"/updatedFile.jar"));
+                    Desktop.getDesktop().open(new File(System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath())));
                 }
             }
+            java.nio.file.Files.delete(temp.toPath());
 
         }catch(Exception err){
             JOptionPane.showMessageDialog(null, "error in\n"+err,"ERROR",JOptionPane.ERROR_MESSAGE);
