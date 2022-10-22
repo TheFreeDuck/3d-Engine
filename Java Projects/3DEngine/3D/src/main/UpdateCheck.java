@@ -20,7 +20,7 @@ public class UpdateCheck {
 
     public UpdateCheck(){
         try {
-            String localHash = getHash(System.getProperty("user.home") + "/Documents/GitHub/3d-Engine/resources/jar/3d-Engine.jar");
+            String localHash = getHash(System.getProperty("user.dir")+"/3d-Engine.jar");
             downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/test.jar");
             String serverHash = getHash(System.getProperty("user.home") + "/Downloads/test.jar");
 
