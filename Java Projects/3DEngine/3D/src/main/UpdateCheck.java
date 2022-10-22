@@ -50,7 +50,7 @@ public class UpdateCheck {
             byte[] digest = md.digest();
             return (Arrays.toString(digest));
         }catch(Exception er) {
-            JOptionPane.showMessageDialog(null, "Error getting hash:" + path + "\n" + er, "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error getting hash: " + path + "\n" + er, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
