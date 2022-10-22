@@ -25,8 +25,6 @@ public class UpdateCheck {
             String serverHash = getHash(System.getProperty("user.home") + "/Downloads/temp.jar");
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
             temp.delete();
-            JOptionPane.showMessageDialog(null,new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
-            JOptionPane.showMessageDialog(null,new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
             if(localHash.equals(serverHash)){
                 Frame frame = new Frame();
                 frame.startGame();
