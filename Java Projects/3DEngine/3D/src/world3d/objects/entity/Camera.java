@@ -23,8 +23,6 @@ public class Camera extends Object3d {
     private double fov;
     private Panel panel;
 
-    private double moveSpeed;
-
     public Camera(Point3d observer, Orientation orientation, Panel panel) {
         super(observer, orientation);
         this.panel = panel;
