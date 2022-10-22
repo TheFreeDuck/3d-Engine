@@ -38,8 +38,8 @@ public class UpdateCheck {
                 }
             }
 
-        }catch(Exception er){
-            JOptionPane.showMessageDialog(null, "error in\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
+        }catch(Exception err){
+            JOptionPane.showMessageDialog(null, "error in\n"+err,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 
