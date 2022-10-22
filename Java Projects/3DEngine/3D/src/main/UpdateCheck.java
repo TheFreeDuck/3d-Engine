@@ -23,6 +23,7 @@ public class UpdateCheck {
             String serverHash = getHash(temp.getPath());
             java.nio.file.Files.delete(temp.toPath());
             if(localHash.equals(serverHash)){
+                JOptionPane.showMessageDialog(null,"App successfully updated!","Success",JOptionPane.INFORMATION_MESSAGE);
                 Frame frame = new Frame();
                 frame.startGame();
             }else{
