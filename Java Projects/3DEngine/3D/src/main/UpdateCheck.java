@@ -23,7 +23,6 @@ public class UpdateCheck {
             String serverHash = getHash(temp.getPath());
             java.nio.file.Files.delete(temp.toPath());
             if(localHash.equals(serverHash)){
-                JOptionPane.showMessageDialog(null,"App successfully updated!","Success",JOptionPane.INFORMATION_MESSAGE);
                 Frame frame = new Frame();
                 frame.startGame();
             }else{
@@ -33,6 +32,7 @@ public class UpdateCheck {
                     frame.startGame();
                 }else{
                     downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
+                    JOptionPane.showMessageDialog(null,"App successfully updated!","Success",JOptionPane.INFORMATION_MESSAGE);
                     Desktop.getDesktop().open(new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
                 }
             }
