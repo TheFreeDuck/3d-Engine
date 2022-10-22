@@ -64,6 +64,11 @@ public class World {
                 Keys.F.setPressed(false);
                 frame.setFullscreen(!frame.isFullscreen());
         }
+        if(Keys.ESC.isPressed()){
+            if(frame.isFullscreen()){
+                frame.setFullscreen(false);
+            }
+        }
     }
 
 }
