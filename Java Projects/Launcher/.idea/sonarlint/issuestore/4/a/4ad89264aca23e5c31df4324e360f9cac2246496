@@ -1,0 +1,16 @@
+
+`	java:S1121"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ
+C
+java:S1604"(Make this anonymous inner class a lambda(Ë¼ÆÆûÿÿÿÿ
+>
+java:S1604+"(Make this anonymous inner class a lambda(™ÓŸí
+C
+java:S16045"(Make this anonymous inner class a lambda(†ë±Åúÿÿÿÿ
+>
+java:S1604="(Make this anonymous inner class a lambda(Ë±Ö£
+g
+java:S2095#"QUse try-with-resources or close this "ReadableByteChannel" in a "finally" clause.(ò·ª·
+d
+java:S2095$"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(øçÞˆ
+O
+java:S1068"9Remove this unused "checkForUpdatesButton" private field.( ¸ž–

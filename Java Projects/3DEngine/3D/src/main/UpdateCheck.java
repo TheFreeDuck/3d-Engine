@@ -21,16 +21,18 @@ public class UpdateCheck {
     public UpdateCheck(){
         try {
             String localHash = getHash(System.getProperty("user.home") + "/Documents/GitHub/3d-Engine/resources/jar/3d-Engine.jar");
-            downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads");
-            String serverHash = System.getProperty("user.home") + "/Downloads";
-            if(localHash==serverHash){
+            downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/test.jar");
+            String serverHash = getHash(System.getProperty("user.home") + "/Downloads/test.jar");
+
+            if(localHash.equals(serverHash)){
                 Frame frame = new Frame();
                 frame.startGame();
             }else{
                 JOptionPane.showMessageDialog(null,"old version");
             }
+
         }catch(Exception er){
-            JOptionPane.showMessageDialog(null, "Something went wrong\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "error in\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -41,7 +43,7 @@ public class UpdateCheck {
             byte[] digest = md.digest();
             return (Arrays.toString(digest));
         }catch(Exception er) {
-            JOptionPane.showMessageDialog(null, "Something went wrong\n" + er, "ERROR", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error getting hash:" + path + "/n" + er, "ERROR", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }
@@ -54,7 +56,7 @@ public class UpdateCheck {
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
             Desktop.getDesktop().open(new File(dest));
         }catch(Exception er){
-            JOptionPane.showMessageDialog(null, "Something went wrong\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error downloading file:" +src + "\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 }
