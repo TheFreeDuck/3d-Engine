@@ -21,9 +21,12 @@ public class UpdateCheck {
     public UpdateCheck(){
         try {
             String localHash = getHash(System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
-            downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/test.jar");
+            downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.home") + "/Downloads/temp.jar");
             String serverHash = getHash(System.getProperty("user.home") + "/Downloads/test.jar");
-
+            File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
+            temp.delete();
+            JOptionPane.showMessageDialog(null,new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
+            JOptionPane.showMessageDialog(null,new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
             if(localHash.equals(serverHash)){
                 Frame frame = new Frame();
                 frame.startGame();
