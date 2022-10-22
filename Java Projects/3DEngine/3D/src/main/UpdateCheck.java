@@ -17,7 +17,7 @@ public class UpdateCheck {
 
     public UpdateCheck(){
         try {
-            String localHash = getHash(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
+            String localHash = getHash(new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");
             downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",temp.getPath());
             String serverHash = getHash(temp.getPath());
@@ -32,7 +32,7 @@ public class UpdateCheck {
                     frame.startGame();
                 }else{
                     downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
-                    Desktop.getDesktop().open(new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
+                    Desktop.getDesktop().open(new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
                 }
             }
 
@@ -44,7 +44,7 @@ public class UpdateCheck {
     private String getHash(String path){
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
-            md.update(Files.readAllBytes(Paths.get(path)));
+            md.update(Files.readAllBytes(Paths.get(java.net.URLDecoder.decode(path))));
             byte[] digest = md.digest();
             return (Arrays.toString(digest));
         }catch(Exception er) {
