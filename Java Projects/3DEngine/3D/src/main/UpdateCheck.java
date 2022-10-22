@@ -54,7 +54,6 @@ public class UpdateCheck {
             ReadableByteChannel rbc = Channels.newChannel(url.openStream());
             FileOutputStream fos = new FileOutputStream(dest);
             fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
-            Desktop.getDesktop().open(new File(dest));
         }catch(Exception er){
             JOptionPane.showMessageDialog(null, "Error downloading file:" +src + "\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
