@@ -28,7 +28,7 @@ public class UpdateCheck {
                 frame.startGame();
             }else{
                 int choice = JOptionPane.showConfirmDialog(null,"Update available!\nWould you like to update the application?","Update Available!", JOptionPane.YES_NO_OPTION);
-                if(choice!=0){
+                if(choice!=JOptionPane.YES_OPTION){
                     Frame frame = new Frame();
                     frame.startGame();
                 }else{
