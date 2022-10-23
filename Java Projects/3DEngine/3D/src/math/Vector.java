@@ -57,6 +57,10 @@ public class Vector {
 
     }
 
+    public double calculateAngleBetweenVector(Vector vector){
+        return Math.acos(dotProduct(vector) / scalar() * vector.scalar());
+    }
+
 
     public Vector addVector(Vector vector) {
         vector.setX(vector.getX() + x);
