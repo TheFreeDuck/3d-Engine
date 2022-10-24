@@ -44,14 +44,14 @@ public class Frame extends JFrame {
             dispose();
             setUndecorated(fullscreen);
             if(fullscreen){
-                setAlwaysOnTop(true);
                 setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
             }else{
-                setAlwaysOnTop(false);
                 pack();
                 setLocationRelativeTo(null);
             }
             setVisible(true);
+            setAlwaysOnTop(true);
+            setAlwaysOnTop(false);
         }
 
     }
