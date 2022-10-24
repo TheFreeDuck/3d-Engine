@@ -46,8 +46,6 @@ public class UpdateCheck {
         }catch(Exception err){
             JOptionPane.showMessageDialog(null, "error in\n"+err,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
-        Frame frame = new Frame();
-        frame.startGame();
     }
 
     private String getHash(String path){
