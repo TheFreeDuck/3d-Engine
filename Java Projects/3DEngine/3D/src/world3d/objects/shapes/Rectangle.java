@@ -148,5 +148,13 @@ public class Rectangle {
         this.vtx4 = vtx4;
     }
 
-
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "vtx1=" + vtx1 +
+                ", vtx2=" + vtx2 +
+                ", vtx3=" + vtx3 +
+                ", vtx4=" + vtx4 +
+                '}';
+    }
 }
