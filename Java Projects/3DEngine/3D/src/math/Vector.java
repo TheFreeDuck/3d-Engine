@@ -58,7 +58,7 @@ public class Vector {
     }
 
     public double calculateAngleBetweenVector(Vector vector){
-        return Math.acos(dotProduct(vector) / scalar() * vector.scalar());
+        return Math.acos((this.dotProduct(vector))/ (this.scalar() * vector.scalar()));
     }
 
 

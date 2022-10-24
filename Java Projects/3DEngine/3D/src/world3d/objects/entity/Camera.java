@@ -62,7 +62,7 @@ public class Camera extends Object3d {
             Point3d pointOnPlane = new Point3d(intersect.getX()-picturePlane.getVtx1().getX(),intersect.getY()-picturePlane.getVtx1().getY(),intersect.getZ()-picturePlane.getVtx1().getZ());
             Vector distance = new Vector(picturePlane.getVtx1(),pointOnPlane);
             double length = distance.scalar();
-            double yAngle = Math.abs(distance.calculateAngleBetweenVector(orientation.getRightDirection()));
+            double yAngle = distance.calculateAngleBetweenVector(orientation.getRightDirection());
             double xAngle = Math.PI/2-yAngle;
             vertex.setP2d(new Point2d(Math.sin(xAngle)*length * (panel.getWidth() / picturePlane.getW()),Math.sin(yAngle)*length * (panel.getHeight() / picturePlane.getH())));
             vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
