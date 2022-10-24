@@ -59,14 +59,14 @@ public class Camera extends Object3d {
                 vertex.setInFrame(true);
             }
             Point3d intersect = new Point3d(ray.getP1().getX() + ray.getVector().getX() * t, ray.getP1().getY() + ray.getVector().getY() * t, ray.getP1().getZ() + ray.getVector().getZ() * t);
-            Point3d relativePoint = new Point3d(intersect.getX()-picturePlane.getVtx1().getX(),intersect.getY()-picturePlane.getVtx1().getY(),intersect.getZ()-picturePlane.getVtx1().getZ());
-            Vector distance = new Vector(picturePlane.getVtx1(),relativePoint);
-            double length = distance.scalar();
-            System.out.println(Math.PI - distance.calculateAngleBetweenVector(orientation.getRightDirection()));
-            double yAngle = Math.abs(Math.PI - distance.calculateAngleBetweenVector(orientation.getRightDirection()));
-            double xAngle = Math.PI/2-yAngle;
-            vertex.setP2d(new Point2d(Math.sin(xAngle)*length * (panel.getWidth() / picturePlane.getW()),Math.sin(yAngle)*length * (panel.getHeight() / picturePlane.getH())));
-            //vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
+            //Point3d relativePoint = new Point3d(intersect.getX()-picturePlane.getVtx1().getX(),intersect.getY()-picturePlane.getVtx1().getY(),intersect.getZ()-picturePlane.getVtx1().getZ());
+            //Vector distance = new Vector(picturePlane.getVtx1(),relativePoint);
+            //double length = distance.scalar();
+            //System.out.println(Math.PI - distance.calculateAngleBetweenVector(orientation.getRightDirection()));
+            //double yAngle = Math.abs(Math.PI - distance.calculateAngleBetweenVector(orientation.getRightDirection()));
+            //double xAngle = Math.PI/2-yAngle;
+            //vertex.setP2d(new Point2d(Math.sin(xAngle)*length * (panel.getWidth() / picturePlane.getW()),Math.sin(yAngle)*length * (panel.getHeight() / picturePlane.getH())));
+            vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
         }
         return vertex;
 
