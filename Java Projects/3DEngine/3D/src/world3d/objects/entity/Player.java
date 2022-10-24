@@ -25,7 +25,6 @@ public class Player extends Entity {
         camera.setOrientation(orientation);
         camera.setObserver(position);
         camera.update();
-        System.out.println(orientation.getForwardDirection().scalar() +" "+ orientation.getUpDirection().scalar() +" "+ orientation.getRightDirection().scalar());
     }
 
     public void keyEvents() {
@@ -55,21 +54,15 @@ public class Player extends Entity {
         }
         if(Keys.UP.isPressed()){
             orientation.rotate(-0.01,Point3d.Y);
-            //forwardDirection.rotate(-0.01,Point3d.Y);
         }
         if(Keys.DOWN.isPressed()){
             orientation.rotate(0.01,Point3d.Y);
-            //forwardDirection.rotate(0.01,Point3d.Y);
         }
         if(Keys.RIGHT.isPressed()){
             orientation.rotate(0.01,Point3d.Z);
-            //forwardDirection.rotate(0.01,Point3d.Z);
-            //rightDirection.rotate(0.01,Point3d.Z);
         }
         if(Keys.LEFT.isPressed()){
             orientation.rotate(-0.01,Point3d.Z);
-            //forwardDirection.rotate(-0.01,Point3d.Z);
-            //rightDirection.rotate(-0.01,Point3d.Z);
         }
         if(Keys.E.isPressed()){
             orientation.rotate(0.01,Point3d.X);

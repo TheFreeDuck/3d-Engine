@@ -1,14 +1,16 @@
 package main.game;
 
 import main.keyinput.Keys;
-import world3d.objects.Orientation;
-import world3d.objects.entity.Player;
-import main.window.Panel;
 import math.Point3d;
 import math.Vector;
 import math.Vertex;
+import world3d.objects.Orientation;
+import world3d.objects.entity.Player;
 import world3d.objects.shapes.Cuboid;
+import main.window.Frame;
+import main.window.Panel;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -19,13 +21,15 @@ public class World {
     public final static double GRAVITY = 0.001;
     private Player player;
     private final Objects objects;
-    main.window.Panel panel;
+    private Frame frame;
+    private Panel panel;
 
 
 
-    public World(Panel panel) {
+    public World(Frame frame,Panel panel) {
         this.panel = panel;
-        player = new Player(new Point3d(-10, 0, 0),new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)),panel);
+        this.frame = frame;
+        player = new Player(new Point3d(10, 0, 0),new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)),panel);
         objects = new Objects();
         objects.addCuboid((new Cuboid(new Point3d(2, 0, 0), 100, 0, 100)));
         objects.addCuboid(new Cuboid(new Vertex(2, 0, 0), 1, 1, 1));
@@ -54,6 +58,15 @@ public class World {
         if(Keys.R.isPressed()){
             player.setPosition(new Point3d(0,0,0));
             player.setOrientation(new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)));
+        }
+        if(Keys.F.isPressed()){
+                Keys.F.setPressed(false);
+                frame.setFullscreen(!frame.isFullscreen());
+        }
+        if(Keys.ESC.isPressed()){
+            if(frame.isFullscreen()){
+                frame.setFullscreen(false);
+            }
         }
     }
 
