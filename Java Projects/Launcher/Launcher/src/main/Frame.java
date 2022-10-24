@@ -33,7 +33,7 @@ public class Frame extends JFrame {
                     fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                     Desktop.getDesktop().open(new File(System.getProperty("user.home") + "/Downloads/downloaded.jar"));
                 }catch(Exception er){
-                    JOptionPane.showMessageDialog(null, "Something went wrong\n"+er,"ERROR",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Check your internet connection\n"+er);
                 }
             }
         });
