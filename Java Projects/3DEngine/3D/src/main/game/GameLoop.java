@@ -1,6 +1,7 @@
 package main.game;
 
 import main.keyinput.KeyInput;
+import main.window.Frame;
 import main.window.Panel;
 
 import java.awt.*;
@@ -15,13 +16,15 @@ public class GameLoop extends Thread {
     int currentFps;
     final int SECOND_IN_NANO = 1000000000;
     private boolean running = false;
-    private main.window.Panel panel;
+    private Frame frame;
+    private Panel panel;
     private KeyInput keyInput;
     private World world;
 
-    public GameLoop(Panel panel, KeyInput keyInput) {
-        this.world = new World(panel);
+    public GameLoop(Frame frame, Panel panel, KeyInput keyInput) {
         this.panel = panel;
+        this.world = new World(frame,panel);
+        this.frame = frame;
         this.keyInput = keyInput;
     }
 

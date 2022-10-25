@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 /**
  *
@@ -21,10 +21,12 @@ public class Panel extends JPanel {
     private final int width = (int) (height * aspectRatio);
     private GameLoop gameLoop;
     private KeyInput keyInput;
+    private Frame frame;
 
-    public Panel() {
+    public Panel(Frame frame) {
+        this.frame = frame;
         this.keyInput = new KeyInput();
-        gameLoop = new GameLoop(this, keyInput);
+        gameLoop = new GameLoop(frame,this, keyInput);
         this.setBackground(Color.black);
         this.setPreferredSize(new Dimension(width, height));
         this.addKeyListener(keyInput);

@@ -17,7 +17,7 @@ public class Vector {
 
     public Vector(Point3d p1, Point3d p2) {
         this.x = p2.getX() - p1.getX();
-        this.y = p2.getX() - p1.getX();
+        this.y = p2.getY() - p1.getY();
         this.z = p2.getZ() - p1.getZ();
     }
 
@@ -55,6 +55,10 @@ public class Vector {
                 break;
         }
 
+    }
+
+    public double calculateAngleBetweenVector(Vector vector){
+        return Math.acos((this.dotProduct(vector))/ (this.scalar() * vector.scalar()));
     }
 
 
