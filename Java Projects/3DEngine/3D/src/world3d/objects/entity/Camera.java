@@ -59,14 +59,14 @@ public class Camera extends Object3d {
         //    vertex.setInFrame(true);
         //}
         Point3d intersect = new Point3d(ray.getP1().getX() + ray.getVector().getX() * t, ray.getP1().getY() + ray.getVector().getY() * t, ray.getP1().getZ() + ray.getVector().getZ() * t);
-        Point3d pointOnPlane = new Point3d(Math.abs(picturePlane.getVtx1().getX() - intersect.getX()), Math.abs(picturePlane.getVtx1().getY() - intersect.getY()), Math.abs(picturePlane.getVtx1().getZ() - intersect.getZ()));
-        Vector distance = new Vector(pointOnPlane, picturePlane.getVtx1());
-        System.out.println(pointOnPlane.getDistanceFromPoint(picturePlane.getVtx1()));
-        System.out.println(distance.scalar());
+        //Point3d pointOnPlane = new Point3d(Math.abs(picturePlane.getVtx1().getX() - intersect.getX()), Math.abs(picturePlane.getVtx1().getY() - intersect.getY()), Math.abs(picturePlane.getVtx1().getZ() - intersect.getZ()));
+        Vector distance = new Vector(intersect, picturePlane.getVtx1());
+        //System.out.println(distance.scalar());
         double length = distance.scalar();
-
         double angle = distance.calculateAngleBetweenVector(orientation.getRightDirection());
-        vertex.setP2d(new Point2d(Math.sin(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.cos(angle) * length * (panel.getHeight() / picturePlane.getH())));
+        vertex.setP2d(new Point2d(Math.sin(angle) * length * panel.getWidth()/fov, Math.cos(angle) * length * panel.getHeight()/fov));
+        System.out.println(vertex.getP2d());
+        System.out.println(panel.getSize());
         //vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
         //}
         return vertex;
