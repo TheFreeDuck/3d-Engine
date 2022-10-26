@@ -26,7 +26,7 @@ public class Vertex extends Point3d {
     }
 
     @Override
-    public Vertex addDistance(double x, double y, double z) {
+    public Vertex addPoint(double x, double y, double z) {
         return new Vertex(this.getX() + x, this.getY() + y, this.getZ() + z);
     }
 

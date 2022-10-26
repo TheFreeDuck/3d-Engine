@@ -55,9 +55,9 @@ public class Rectangle {
         this.w = w;
         this.h = h;
         this.vtx1 = new Vertex(p1);
-        this.vtx2 = vtx1.addDistance(0, w, 0);
-        this.vtx3 = vtx2.addDistance(0, 0, -h);
-        this.vtx4 = vtx3.addDistance(0, -w, 0);
+        this.vtx2 = vtx1.addPoint(0, w, 0);
+        this.vtx3 = vtx2.addPoint(0, 0, -h);
+        this.vtx4 = vtx3.addPoint(0, -w, 0);
 
         v1 = new Vector(p1, vtx2);
         v2 = new Vector(p1, vtx4);

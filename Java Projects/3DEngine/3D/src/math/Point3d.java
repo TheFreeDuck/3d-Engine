@@ -14,6 +14,12 @@ public class Point3d {
     private double z;
     boolean inFrame;
 
+    /**
+     * creates a point from 3 values
+     * @param x value
+     * @param y value
+     * @param z value
+     */
     public Point3d(double x, double y, double z) {
         this.x = x;
         this.y = y;
@@ -21,21 +27,37 @@ public class Point3d {
         inFrame = true;
     }
 
-    public Point3d addDistance(double x, double y, double z) {
+    public Point3d addPoint(double x, double y, double z) {
         return new Point3d(this.x + x, this.y + y, this.z + z);
     }
-    
-    public Point3d addVelocity(Vector velocity) {
+
+    /**
+     * Adds the values of a vector to the values of the point
+     * @param velocity The vector to add
+     * @return The new point
+     */
+    public Point3d addVector(Vector velocity) {
         return new Point3d(this.x + velocity.getX(), this.y + velocity.getY(), this.z + velocity.getZ());
     }
-    
+
+    /**
+     * Adds a given distance along a given vector
+     * @param v The vector to move along
+     * @param distance The distance to move
+     * @return The moved point
+     */
     public Point3d addDistanceAlongVector(Vector v, double distance) {
         v = v.unitVector();
         v = new Vector(v.getX()*distance,v.getY()*distance,v.getZ()*distance);
         return new Point3d(this.x + v.getX(), this.y + v.getY(), this.z + v.getZ());
     }
 
-    public Point3d subtrackPoint(Point3d p2) {
+    /**
+     *
+     * @param p2
+     * @return
+     */
+    public Point3d subtractPoint(Point3d p2) {
         return new Point3d(x - p2.x, y - p2.y, z - p2.z);
     }
 

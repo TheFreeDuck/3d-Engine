@@ -20,7 +20,7 @@ public class Player extends Entity {
 
     @Override
     public void update() {
-        position = position.addVelocity(velocity.addVector(movement));
+        position = position.addVector(velocity.addVector(movement));
 
         camera.setOrientation(orientation);
         camera.setObserver(position);
