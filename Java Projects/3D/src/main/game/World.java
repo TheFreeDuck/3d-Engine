@@ -4,9 +4,9 @@ import main.keyinput.Keys;
 import math.Point3d;
 import math.Vector;
 import math.Vertex;
-import world3d.objects.Orientation;
-import world3d.objects.entity.Player;
-import world3d.objects.shapes.Cuboid;
+import world3d.Orientation;
+import world3d.entity.Player;
+import world3d.shapes.Cuboid;
 import main.window.Frame;
 import main.window.Panel;
 

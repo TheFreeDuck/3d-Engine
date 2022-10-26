@@ -2,7 +2,7 @@ package main.game;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
-import world3d.objects.shapes.Cuboid;
+import world3d.shapes.Cuboid;
 
 /**
  *

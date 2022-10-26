@@ -1,4 +1,4 @@
-package world3d.objects.shapes;
+package world3d.shapes;
 
 import java.awt.Color;
 import java.awt.Graphics;

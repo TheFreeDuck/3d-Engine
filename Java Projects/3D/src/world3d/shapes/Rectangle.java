@@ -1,4 +1,4 @@
-package world3d.objects.shapes;
+package world3d.shapes;
 
 import math.Point3d;
 import math.Vector;

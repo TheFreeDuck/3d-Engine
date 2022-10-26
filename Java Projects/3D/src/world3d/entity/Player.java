@@ -1,10 +1,10 @@
-package world3d.objects.entity;
+package world3d.entity;
 
 import main.keyinput.Keys;
 import main.window.Panel;
 import math.Point3d;
 import math.Vector;
-import world3d.objects.Orientation;
+import world3d.Orientation;
 
 public class Player extends Entity {
     private Vector movement;

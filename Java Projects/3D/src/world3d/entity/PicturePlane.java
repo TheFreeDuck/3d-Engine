@@ -1,7 +1,7 @@
-package world3d.objects.entity;
+package world3d.entity;
 
 import math.Point3d;
-import world3d.objects.shapes.Rectangle;
+import world3d.shapes.Rectangle;
 
 public class PicturePlane extends Rectangle {
     private double aspectRatio;

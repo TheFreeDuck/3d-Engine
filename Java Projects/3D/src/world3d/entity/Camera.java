@@ -1,11 +1,12 @@
-package world3d.objects.entity;
+package world3d.entity;
 
 import main.game.Objects;
 import main.window.Panel;
 import math.*;
-import world3d.objects.Object3d;
-import world3d.objects.Orientation;
-import world3d.objects.shapes.Cuboid;
+import world3d.Orientation;
+import world3d.Object3d;
+import world3d.shapes.Cuboid;
+import world3d.shapes.Rectangle;
 
 import java.awt.*;
 
@@ -94,7 +95,7 @@ public class Camera extends Object3d {
         this.observer = observer;
     }
 
-    public world3d.objects.shapes.Rectangle getPicturePlane() {
+    public Rectangle getPicturePlane() {
         return picturePlane;
     }
 

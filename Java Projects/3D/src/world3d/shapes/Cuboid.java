@@ -1,4 +1,4 @@
-package world3d.objects.shapes;
+package world3d.shapes;
 
 import math.Point3d;
 import math.Vertex;
@@ -23,7 +23,7 @@ public class Cuboid {
     private Vertex vtx7;
     private Vertex vtx8;
     private ArrayList<Vertex> vertecies;
-    private Rectangle r1, r2, r3, r4, r5, r6;
+    private world3d.shapes.Rectangle r1, r2, r3, r4, r5, r6;
 
     public Cuboid(Point3d p1, double w, double h, double l) {
         this.w = w;
@@ -47,12 +47,12 @@ public class Cuboid {
         vertecies.add(vtx7);
         vertecies.add(vtx8);
 
-        r1 = new Rectangle(vtx2, vtx3, vtx4, vtx1);
-        r2 = new Rectangle(vtx3, vtx7, vtx8, vtx4);
-        r3 = new Rectangle(vtx6, vtx7, vtx8, vtx5);
-        r4 = new Rectangle(vtx2, vtx6, vtx5, vtx1);
-        r5 = new Rectangle(vtx6, vtx7, vtx3, vtx2);
-        r6 = new Rectangle(vtx5, vtx8, vtx4, vtx1);
+        r1 = new world3d.shapes.Rectangle(vtx2, vtx3, vtx4, vtx1);
+        r2 = new world3d.shapes.Rectangle(vtx3, vtx7, vtx8, vtx4);
+        r3 = new world3d.shapes.Rectangle(vtx6, vtx7, vtx8, vtx5);
+        r4 = new world3d.shapes.Rectangle(vtx2, vtx6, vtx5, vtx1);
+        r5 = new world3d.shapes.Rectangle(vtx6, vtx7, vtx3, vtx2);
+        r6 = new world3d.shapes.Rectangle(vtx5, vtx8, vtx4, vtx1);
     }
 
     public ArrayList<Vertex> getVertecies() {
@@ -67,8 +67,8 @@ public class Cuboid {
         vertecies.set(element, vertex);
     }
 
-    public ArrayList<Rectangle> listOfRectangles() {
-        ArrayList<Rectangle> rectangles = new ArrayList<>();
+    public ArrayList<world3d.shapes.Rectangle> listOfRectangles() {
+        ArrayList<world3d.shapes.Rectangle> rectangles = new ArrayList<>();
         rectangles.add(r1);
         rectangles.add(r2);
         rectangles.add(r3);
@@ -83,12 +83,12 @@ public class Cuboid {
     }
 
     public void draw(Graphics g) {
-        r1 = new Rectangle(vtx2, vtx3, vtx4, vtx1);
-        r2 = new Rectangle(vtx3, vtx7, vtx8, vtx4);
-        r3 = new Rectangle(vtx6, vtx7, vtx8, vtx5);
-        r4 = new Rectangle(vtx2, vtx6, vtx5, vtx1);
-        r5 = new Rectangle(vtx6, vtx7, vtx3, vtx2);
-        r6 = new Rectangle(vtx5, vtx8, vtx4, vtx1);
+        r1 = new world3d.shapes.Rectangle(vtx2, vtx3, vtx4, vtx1);
+        r2 = new world3d.shapes.Rectangle(vtx3, vtx7, vtx8, vtx4);
+        r3 = new world3d.shapes.Rectangle(vtx6, vtx7, vtx8, vtx5);
+        r4 = new world3d.shapes.Rectangle(vtx2, vtx6, vtx5, vtx1);
+        r5 = new world3d.shapes.Rectangle(vtx6, vtx7, vtx3, vtx2);
+        r6 = new world3d.shapes.Rectangle(vtx5, vtx8, vtx4, vtx1);
         for (Rectangle rectangle : listOfRectangles()) {
             rectangle.draw(g);
         }
