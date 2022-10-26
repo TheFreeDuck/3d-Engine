@@ -52,11 +52,6 @@ public class Point3d {
         return new Point3d(this.x + v.getX(), this.y + v.getY(), this.z + v.getZ());
     }
 
-    /**
-     *
-     * @param p2
-     * @return
-     */
     public Point3d subtractPoint(Point3d p2) {
         return new Point3d(x - p2.x, y - p2.y, z - p2.z);
     }
