@@ -1,19 +1,16 @@
 package main.window;
 
-import main.Main;
-
 import javax.imageio.ImageIO;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.BufferedInputStream;
-import java.io.InputStream;
 import java.util.Objects;
 
 public class Frame extends JFrame {
+    public static void main(String[] args){
+        Frame frame = new Frame();
+        frame.startGame();
+    }
     private Panel panel;
     private boolean fullscreen;
 

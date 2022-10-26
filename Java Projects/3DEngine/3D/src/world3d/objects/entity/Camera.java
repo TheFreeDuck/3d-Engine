@@ -44,29 +44,33 @@ public class Camera extends Object3d {
 
     }
 
+    /**
+     * projects a vertex on the picture plane
+     * @param vertex The vertex to be projected
+     * @return The projected vertex
+     */
     private Vertex projectVertex(Vertex vertex) {
-        //if (orientation.getForwardDirection().dotProduct(new Ray(observer, vertex).getVector()) > 0) {
+        //FIXME if (orientation.getForwardDirection().dotProduct(new Ray(observer, vertex).getVector()) > 0) {
         Ray ray = new Ray(vertex, observer);
         double a = picturePlane.getVtx1().getY() * (picturePlane.getVtx2().getZ() - picturePlane.getVtx3().getZ()) + picturePlane.getVtx2().getY() * (picturePlane.getVtx3().getZ() - picturePlane.getVtx1().getZ()) + picturePlane.getVtx3().getY() * (picturePlane.getVtx1().getZ() - picturePlane.getVtx2().getZ());
         double b = picturePlane.getVtx1().getZ() * (picturePlane.getVtx2().getX() - picturePlane.getVtx3().getX()) + picturePlane.getVtx2().getZ() * (picturePlane.getVtx3().getX() - picturePlane.getVtx1().getX()) + picturePlane.getVtx3().getZ() * (picturePlane.getVtx1().getX() - picturePlane.getVtx2().getX());
         double c = picturePlane.getVtx1().getX() * (picturePlane.getVtx2().getY() - picturePlane.getVtx3().getY()) + picturePlane.getVtx2().getX() * (picturePlane.getVtx3().getY() - picturePlane.getVtx1().getY()) + picturePlane.getVtx3().getX() * (picturePlane.getVtx1().getY() - picturePlane.getVtx2().getY());
         double d = -picturePlane.getVtx1().getX() * (picturePlane.getVtx2().getY() * picturePlane.getVtx3().getZ() - picturePlane.getVtx3().getY() * picturePlane.getVtx2().getZ()) - picturePlane.getVtx2().getX() * (picturePlane.getVtx3().getY() * picturePlane.getVtx1().getZ() - picturePlane.getVtx1().getY() * picturePlane.getVtx3().getZ()) - picturePlane.getVtx3().getX() * (picturePlane.getVtx1().getY() * picturePlane.getVtx2().getZ() - picturePlane.getVtx2().getY() * picturePlane.getVtx1().getZ());
         double t = -(a * ray.getP1().getX() + b * ray.getP1().getY() + c * ray.getP1().getX() + d) / (a * ray.getVector().getX() + b * ray.getVector().getY() + c * ray.getVector().getZ());
-        //if T NEGATIVE FIX
-        //if (t < 0) {
-        //    vertex.setInFrame(false);
-        //} else if (t > 0) {
-        //    vertex.setInFrame(true);
-        //}
+        /*
+        TODO if t NEGATIVE FIX
+        if (t < 0) {
+            vertex.setInFrame(false);
+        } else if (t > 0) {
+            vertex.setInFrame(true);
+        }
+        */
         Point3d intersect = new Point3d(ray.getP1().getX() + ray.getVector().getX() * t, ray.getP1().getY() + ray.getVector().getY() * t, ray.getP1().getZ() + ray.getVector().getZ() * t);
-        //Point3d pointOnPlane = new Point3d(Math.abs(picturePlane.getVtx1().getX() - intersect.getX()), Math.abs(picturePlane.getVtx1().getY() - intersect.getY()), Math.abs(picturePlane.getVtx1().getZ() - intersect.getZ()));
         Vector distance = new Vector(intersect, picturePlane.getVtx1());
         double length = distance.scalar();
-        System.out.println(distance.scalar());
         double angle = Math.PI - distance.angleBetweenVector(orientation.getRightDirection());
         vertex.setP2d(new Point2d(Math.cos(angle) * length * panel.getWidth(), Math.sin(angle) * length * panel.getHeight()*panel.getAspectRatio()));
-        //vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
-        //}
+        //FIXME vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
         return vertex;
 
     }
@@ -74,7 +78,6 @@ public class Camera extends Object3d {
     @Override
     public void update() {
         updatePicturePlane();
-        //System.out.println(new Ray(observer, picturePlane.getVtx1()).length());
     }
 
     private void updatePicturePlane() {

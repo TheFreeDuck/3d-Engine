@@ -1,5 +1,7 @@
 package main;
 
+import main.window.Frame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -12,11 +14,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
 import java.util.Arrays;
-import main.window.Frame;
 
 public class UpdateCheck {
 
-    public UpdateCheck(){
+    public void startUpdateCheck(){
         try {
             String localHash = getHash(new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getPath());
             File temp = new File(System.getProperty("user.home") + "/Downloads/temp.jar");

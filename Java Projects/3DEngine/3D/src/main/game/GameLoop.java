@@ -28,6 +28,10 @@ public class GameLoop extends Thread {
         this.keyInput = keyInput;
     }
 
+    /**
+     * handles how the game should be updated and drawn
+     * @throws RuntimeException
+     */
     @Override
     public void run() throws RuntimeException {
         long lastTime = System.nanoTime();
@@ -64,13 +68,20 @@ public class GameLoop extends Thread {
         drawFps(g);
     }
 
+    /**
+     * write how many fps the game loop is getting
+     * @param g
+     */
     private void drawFps(Graphics g) {
-        Font fpsFont = new Font("arial", Font.PLAIN, 20);
+        Font fpsFont = new Font("arial", Font.PLAIN, 15);
         g.setFont(fpsFont);
         g.setColor(Color.green);
-        g.drawString("fps: " + currentFps, 3, 20);
+        g.drawString("fps: " + currentFps, 3, 15);
     }
 
+    /**
+     * updates the game
+     */
     public void update() {
         world.keyEvents();
         world.update();

@@ -31,7 +31,7 @@ public class World {
         this.frame = frame;
         player = new Player(new Point3d(-10, 0, 0),new Orientation( new Vector(1, 0, 0), new Vector(0, 1, 0)),panel);
         objects = new Objects();
-        objects.addCuboid((new Cuboid(new Point3d(2, 0, 0), 100, 0, 100)));
+        //objects.addCuboid((new Cuboid(new Point3d(2, 0, 0), 100, 0, 100)));
         objects.addCuboid(new Cuboid(new Vertex(2, 0, 0), 1, 1, 1));
         //for (int i = 0; i < 100; i++) {
           //  objects.addCuboid(new Cuboid(new Point3d(Math.max(2,Math.random()*20),Math.random()*20,Math.random()*20),1,1,1));
