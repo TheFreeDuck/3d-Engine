@@ -8,6 +8,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.Objects;
@@ -45,13 +46,16 @@ public class Frame extends JFrame {
             setUndecorated(fullscreen);
             if(fullscreen){
                 setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
+                setCursor(getToolkit().createCustomCursor(new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "null"));
             }else{
                 pack();
                 setLocationRelativeTo(null);
+                setCursor(Cursor.getDefaultCursor());
             }
             setVisible(true);
             setAlwaysOnTop(true);
             setAlwaysOnTop(false);
+
         }
 
     }

@@ -16,6 +16,11 @@ body {
     height: auto;
  }​*/
 
+.icon{
+    text-align: left;
+    width: 2rem;
+}
+
 .button {
     padding-top: 10px;
     cursor: pointer;
@@ -23,6 +28,7 @@ body {
 }
 
 .header {
+    display: block;
     border-bottom: 2px solid white;
     padding: 30px 0px 30px;
     background-color: #20578e;
