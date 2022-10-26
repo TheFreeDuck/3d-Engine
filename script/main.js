@@ -10,11 +10,11 @@ $("#switch").change(function() {
             alert("Virus detected!! Download free nordic vpnfor delete");
         });
         $("body").on("mousemove", colorChange);
-        $("img").animate({width: '400'}, "slow");
-        $("img").animate({width: '200'}, "slow");
+        $(".download-button").animate({width: '400'}, "slow");
+        $(".download-button").animate({width: '200'}, "slow");
         animateInterval = setInterval(() => {
-            $("img").animate({width: '400'}, "slow");
-            $("img").animate({width: '200'}, "slow");
+            $(".download-button").animate({width: '400'}, "slow");
+            $(".download-button").animate({width: '200'}, "slow");
         }, 1200);
     } else if ($('#switch').prop('checked') == false) {
         //$("html").remove();
