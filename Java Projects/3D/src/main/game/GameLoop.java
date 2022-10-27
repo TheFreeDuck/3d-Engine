@@ -1,8 +1,8 @@
 package main.game;
 
-import main.keyinput.KeyInput;
-import main.window.Frame;
-import main.window.Panel;
+import main.game.keyinput.KeyInput;
+import main.game.window.Frame;
+import main.game.window.Panel;
 
 import java.awt.*;
 

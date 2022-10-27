@@ -1,6 +1,6 @@
 package main;
 
-import main.window.Frame;
+import main.game.window.Frame;
 
 import javax.swing.*;
 import java.awt.*;
