@@ -50,7 +50,7 @@ public class Camera extends Object3d {
      * @return The projected vertex
      */
     private Vertex projectVertex(Vertex vertex) {
-        if(orientation.getForward().dotProduct(new Vector(observer, vertex)) > 0) {
+        if(vertex.isInFrontOf(observer,orientation.getForward())) {
             Ray ray = new Ray(vertex, observer);
             double a = picturePlane.getVtx1().getY() * (picturePlane.getVtx2().getZ() - picturePlane.getVtx3().getZ()) + picturePlane.getVtx2().getY() * (picturePlane.getVtx3().getZ() - picturePlane.getVtx1().getZ()) + picturePlane.getVtx3().getY() * (picturePlane.getVtx1().getZ() - picturePlane.getVtx2().getZ());
             double b = picturePlane.getVtx1().getZ() * (picturePlane.getVtx2().getX() - picturePlane.getVtx3().getX()) + picturePlane.getVtx2().getZ() * (picturePlane.getVtx3().getX() - picturePlane.getVtx1().getX()) + picturePlane.getVtx3().getZ() * (picturePlane.getVtx1().getX() - picturePlane.getVtx2().getX());
@@ -65,13 +65,17 @@ public class Camera extends Object3d {
             Point3d intersect = new Point3d(ray.getP1().getX() + ray.getVector().getX() * t, ray.getP1().getY() + ray.getVector().getY() * t, ray.getP1().getZ() + ray.getVector().getZ() * t);
             Vector hypotenuse = new Vector(intersect, picturePlane.getVtx1());
             double length = hypotenuse.scalar();
-            if (orientation.getUp().dotProduct(new Vector(intersect, picturePlane.getVtx1())) > 0) {
-                double angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight());
+            double angle;
+            if (intersect.isInFrontOf(picturePlane.getVtx1(),orientation.getUp())) {
+                angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight())* -1 ;
                 vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
             } else {
-                double angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight()) * -1;
-                vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
+                angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight());
+
             }
+            vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
+        }else{
+            System.out.println("ass");
         }
         //vertex.setP2d(new Point2d((intersect.getY() - picturePlane.getVtx1().getY()) * (panel.getWidth() / picturePlane.getW()), (picturePlane.getVtx1().getZ() - intersect.getZ()) * (panel.getHeight() / picturePlane.getH())));
         return vertex;

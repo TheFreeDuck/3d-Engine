@@ -60,6 +60,10 @@ public class Point3d {
         return Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2) + Math.pow(p.z - z, 2));
     }
 
+    public boolean isInFrontOf(Point3d p,Vector vector){
+        return vector.dotProduct(new Vector(p, this)) > 0;
+    }
+
     public double getX() {
         return x;
     }
