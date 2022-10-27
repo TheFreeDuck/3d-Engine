@@ -45,7 +45,7 @@ public class UpdateCheck {
             }
 
         }catch(Exception err){
-            JOptionPane.showMessageDialog(null, "error in\n"+err,"ERROR",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error\n"+err,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }
 
