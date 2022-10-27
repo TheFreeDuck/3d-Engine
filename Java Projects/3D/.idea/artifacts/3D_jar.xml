@@ -2,9 +2,6 @@
   <artifact type="jar" name="3D:jar">
     <output-path>$PROJECT_DIR$/../../resources/jar</output-path>
     <root id="archive" name="3D.jar">
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/out/artifacts/3D_jar/META-INF/MANIFEST.MF" />
-      </element>
       <element id="module-output" name="3D" />
     </root>
   </artifact>
