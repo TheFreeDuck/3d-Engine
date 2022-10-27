@@ -34,7 +34,7 @@ public class UpdateCheck {
                     frame.startGame();
                 }else{
                     downloadFile("https://fabulous-puffpuff-8f0c55.netlify.app/resources/jar/3d-Engine.jar",System.getProperty("user.dir")+"/"+new java.io.File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()).getName());
-                    choice = JOptionPane.showConfirmDialog(null,"The application was successfully installed!\nWould you like to run it?","Success!", JOptionPane.YES_NO_OPTION);
+                    choice = JOptionPane.showConfirmDialog(null,"The application was successfully installed!!\nWould you like to run it?","Success!", JOptionPane.YES_NO_OPTION);
                     if(choice==JOptionPane.YES_OPTION){
                         Desktop.getDesktop().open(new File(Main.class.getProtectionDomain().getCodeSource().getLocation().getPath()));
                     }else{
