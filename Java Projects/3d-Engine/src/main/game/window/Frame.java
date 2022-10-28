@@ -7,10 +7,11 @@ import java.awt.image.BufferedImage;
 import java.util.Objects;
 
 public class Frame extends JFrame {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Frame frame = new Frame();
         frame.startGame();
     }
+
     private Panel panel;
     private boolean fullscreen;
 
@@ -19,7 +20,8 @@ public class Frame extends JFrame {
         try {
             Image icon = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("icon.png")));
             this.setIconImage(icon);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         this.setResizable(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -36,15 +38,15 @@ public class Frame extends JFrame {
         panel.startGameLoop();
     }
 
-    public void setFullscreen(Boolean fullscreen){
-        if(!this.fullscreen == fullscreen){
+    public void setFullscreen(Boolean fullscreen) {
+        if (!this.fullscreen == fullscreen) {
             this.fullscreen = fullscreen;
             dispose();
             setUndecorated(fullscreen);
-            if(fullscreen){
-                setBounds(0,0,Toolkit.getDefaultToolkit().getScreenSize().width,Toolkit.getDefaultToolkit().getScreenSize().height);
+            if (fullscreen) {
+                setBounds(0, 0, Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
                 setCursor(getToolkit().createCustomCursor(new BufferedImage(3, 3, BufferedImage.TYPE_INT_ARGB), new Point(0, 0), "null"));
-            }else{
+            } else {
                 pack();
                 setLocationRelativeTo(null);
                 setCursor(Cursor.getDefaultCursor());

@@ -22,7 +22,7 @@ public class Cuboid {
     private Vertex vtx6;
     private Vertex vtx7;
     private Vertex vtx8;
-    private ArrayList<Vertex> vertecies;
+    private ArrayList<Vertex> vertices;
     private main.game.world3d.shapes.Rectangle r1, r2, r3, r4, r5, r6;
 
     public Cuboid(Point3d p1, double w, double h, double l) {
@@ -37,15 +37,15 @@ public class Cuboid {
         this.vtx6 = vtx5.addPoint(0, 0, h);
         this.vtx7 = vtx6.addPoint(0, w, 0);
         this.vtx8 = vtx7.addPoint(0, 0, -h);
-        vertecies = new ArrayList<>();
-        vertecies.add(vtx1);
-        vertecies.add(vtx2);
-        vertecies.add(vtx3);
-        vertecies.add(vtx4);
-        vertecies.add(vtx5);
-        vertecies.add(vtx6);
-        vertecies.add(vtx7);
-        vertecies.add(vtx8);
+        vertices = new ArrayList<>();
+        vertices.add(vtx1);
+        vertices.add(vtx2);
+        vertices.add(vtx3);
+        vertices.add(vtx4);
+        vertices.add(vtx5);
+        vertices.add(vtx6);
+        vertices.add(vtx7);
+        vertices.add(vtx8);
 
         r1 = new main.game.world3d.shapes.Rectangle(vtx2, vtx3, vtx4, vtx1);
         r2 = new main.game.world3d.shapes.Rectangle(vtx3, vtx7, vtx8, vtx4);
@@ -55,16 +55,16 @@ public class Cuboid {
         r6 = new main.game.world3d.shapes.Rectangle(vtx5, vtx8, vtx4, vtx1);
     }
 
-    public ArrayList<Vertex> getVertecies() {
-        return vertecies;
+    public ArrayList<Vertex> getVertices() {
+        return vertices;
     }
 
-    public void setVertecies(ArrayList<Vertex> vertecies) {
-        this.vertecies = vertecies;
+    public void setVertices(ArrayList<Vertex> vertices) {
+        this.vertices = vertices;
     }
 
     public void changeVertex(Vertex vertex, int element) {
-        vertecies.set(element, vertex);
+        vertices.set(element, vertex);
     }
 
     public ArrayList<main.game.world3d.shapes.Rectangle> listOfRectangles() {

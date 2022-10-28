@@ -1,5 +1,7 @@
 package main.game.math;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Fredrik
@@ -7,6 +9,7 @@ package main.game.math;
 public class Vertex extends Point3d {
 
     private Point2d p2D = new Point2d(0,0);
+    private ArrayList<Vertex> connectedVertices;
 
     public Vertex(double x, double y, double z) {
         super(x, y, z);

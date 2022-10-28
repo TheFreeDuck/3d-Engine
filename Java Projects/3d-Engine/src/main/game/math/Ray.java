@@ -1,7 +1,6 @@
 package main.game.math;
 
 /**
- *
  * @author Fredrik
  */
 public class Ray {
@@ -16,6 +15,7 @@ public class Ray {
 
     /**
      * Calculates the vector of the ray. p1 is the front of the vector
+     *
      * @return the vector of the ray
      */
     public Vector getVector() {
@@ -41,6 +41,6 @@ public class Ray {
     public void setP2(Point3d p2) {
         this.p2 = p2;
     }
-    
-    
+
+
 }
