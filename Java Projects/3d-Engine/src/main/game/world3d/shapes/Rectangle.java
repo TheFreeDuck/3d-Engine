@@ -15,11 +15,12 @@ import java.util.ArrayList;
 public class Rectangle {
 
     private double w, h;
-    private Vertex vtx1, vtx2, vtx3, vtx4;
+    ArrayList<Vertex> vertices;
     private Vector v1, v2;
     private Color color;
 
     public Rectangle(Point3d p1, Point3d p2, Point3d p3, Point3d p4) {
+        vertices.add(new Vertex(p1))
         this.vtx1 = new Vertex(p1);
         this.vtx2 = new Vertex(p2);
         this.vtx3 = new Vertex(p3);
@@ -54,13 +55,13 @@ public class Rectangle {
     public Rectangle(Point3d p1, double w, double h) {
         this.w = w;
         this.h = h;
-        this.vtx1 = new Vertex(p1);
-        this.vtx2 = vtx1.addPoint(0, w, 0);
-        this.vtx3 = vtx2.addPoint(0, 0, -h);
-        this.vtx4 = vtx3.addPoint(0, -w, 0);
+        vertices.add(new Vertex(p1));
+        vertices.add(vertices.get(0).addPoint(0, w, 0));
+        vertices.add(vertices.get(1).addPoint(0, 0, -h));
+        vertices.add(vertices.get(2).addPoint(0, -w, 0));
 
-        v1 = new Vector(p1, vtx2);
-        v2 = new Vector(p1, vtx4);
+        v1 = new Vector(p1, vertices.get(1));
+        v2 = new Vector(p1, vertices.get(3));
 
     }
 
