@@ -116,6 +116,7 @@ body {
 
 #crazy-mode-div{
   display: block;
+  float: right;
   margin-top: 0.3%;
   margin-left: 20px;
   margin-right: 20px;
@@ -168,7 +169,7 @@ input[type=checkbox] {
   }
   
   label:active:after {
-    width: 130px;
+    width: 80px;
   }
 
   #crazy-mode-div {
