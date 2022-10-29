@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.ArrayList;
 
 /**
- * p1 is top left
+ * p1 is top left of the rectangle
  *
  * @author Fredrik
  */
@@ -20,11 +20,8 @@ public class Rectangle {
     private Color color;
 
     public Rectangle(Point3d p1, Point3d p2, Point3d p3, Point3d p4) {
-        vertices.add(new Vertex(p1))
-        this.vtx1 = new Vertex(p1);
-        this.vtx2 = new Vertex(p2);
-        this.vtx3 = new Vertex(p3);
-        this.vtx4 = new Vertex(p4);
+        vertices.add(new Vertex(p1));
+        vertices.add(new Vertex(p2));
 
         w = p1.getDistanceFromPoint(p2);
         h = p2.getDistanceFromPoint(p3);
