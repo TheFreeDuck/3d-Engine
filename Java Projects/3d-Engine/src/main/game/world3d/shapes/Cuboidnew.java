@@ -5,8 +5,6 @@ import main.game.math.Vector;
 import main.game.math.Vertex;
 import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
-
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +15,6 @@ public class Cuboidnew extends Object3d {
     private double w;
     private double h;
     private double l;
-    private ArrayList<Vertex> vertices;
 
     public Cuboidnew(Point3d p1, double w, double h, double l) {
         super(p1,new Orientation(new Vector(1,0,0),new Vector(0,1,0)));
@@ -48,18 +45,6 @@ public class Cuboidnew extends Object3d {
 
     public void update() {
 
-    }
-
-    public void draw(Graphics g) {
-        r1 = new Rectangle(vtx2, vtx3, vtx4, vtx1);
-        r2 = new Rectangle(vtx3, vtx7, vtx8, vtx4);
-        r3 = new Rectangle(vtx6, vtx7, vtx8, vtx5);
-        r4 = new Rectangle(vtx2, vtx6, vtx5, vtx1);
-        r5 = new Rectangle(vtx6, vtx7, vtx3, vtx2);
-        r6 = new Rectangle(vtx5, vtx8, vtx4, vtx1);
-        for (Rectangle rectangle : listOfRectangles()) {
-            rectangle.draw(g);
-        }
     }
 
     public double getW() {
