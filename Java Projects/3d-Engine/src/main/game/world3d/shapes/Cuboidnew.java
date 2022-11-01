@@ -29,6 +29,7 @@ public class Cuboidnew extends Object3d {
         vertices.add(vertices.get(4).addPoint(0, 0, h));
         vertices.add(vertices.get(5).addPoint(0, w, 0));
         vertices.add(vertices.get(6).addPoint(0, 0, -h));
+         //TODO make vertecies know which other vertecies they are connected to
     }
 
     public ArrayList<Vertex> getVertices() {

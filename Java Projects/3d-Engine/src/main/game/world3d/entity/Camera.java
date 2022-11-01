@@ -35,10 +35,8 @@ public class Camera extends Object3d {
     }
 
     public Objects projectObjects(Objects objects) {
-        for (Cuboid cuboid : objects.getCuboids()) {
-            for (int i = 0; i < cuboid.getVertices().size(); i++) {
-                cuboid.changeVertex(projectVertex(cuboid.getVertices().get(i)), i);
-            }
+        for (Object3d object : objects) {
+            //TODO take in objects and project them
         }
         return objects;
 
@@ -51,7 +49,7 @@ public class Camera extends Object3d {
      * @return The projected vertex
      */
 
-    private Vertex projectVertex(Vertex vertex) {
+    private Vertex projectVertex(Object3d object) {
         if (vertex.isInFrontOf(picturePlane.getVtx1(), orientation.getForward())) {
             vertex.setInFrame(true);
             Ray ray = new Ray(vertex, observer);
@@ -80,6 +78,7 @@ public class Camera extends Object3d {
             }
         } else {
             vertex.setInFrame(false);
+            //TODO if the vertex is behind the camera. draw a ray between the vertex behind the camera and a vertex it is connected to which is in front of the camera and find the intersect of the ray with the picture plane to find where to project the vertex
         }
         return vertex;
 
