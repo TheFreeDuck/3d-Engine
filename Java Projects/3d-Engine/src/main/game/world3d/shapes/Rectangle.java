@@ -19,15 +19,20 @@ public class Rectangle {
     private Vector v1, v2;
     private Color color;
 
+    Vertex vtx1;
+    Vertex vtx2;
+    Vertex vtx3;
+    Vertex vtx4;
+
     public Rectangle(Point3d p1, Point3d p2, Point3d p3, Point3d p4) {
-        vertices.add(new Vertex(p1));
-        vertices.add(new Vertex(p2));
 
         w = p1.getDistanceFromPoint(p2);
         h = p2.getDistanceFromPoint(p3);
 
-        v1 = new Vector(p1, p2);
-        v2 = new Vector(p1, p4);
+        this.vtx1 = new Vertex(p1);
+        this.vtx2 = new Vertex(p2);
+        this.vtx3 = new Vertex(p3);
+        this.vtx4 = new Vertex(p4);
 
         color = Color.green;
 

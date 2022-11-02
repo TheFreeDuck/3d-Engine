@@ -84,10 +84,6 @@ public class Camera extends Object3d {
         return vertex;
 
     }
-    
-    private Vertex projectVertexInfrontOfCamera(){
-        
-    }
 
     @Override
     public void update() {
