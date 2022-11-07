@@ -23,10 +23,12 @@ public enum Keys {
     private final int keyCode;
     private boolean pressed;
 
+    private boolean pressedOneTick;
+
     private Keys(boolean pressed, int keyCode) {
         this.pressed = pressed;
         this.keyCode = keyCode;
-
+        this.pressedOneTick = false;
     }
 
     public boolean isPressed() {
@@ -39,5 +41,13 @@ public enum Keys {
 
     public int getKeyCode() {
         return keyCode;
+    }
+
+    public boolean isPressedOneTick() {
+        return pressedOneTick;
+    }
+
+    public void setPressedOneTick(boolean pressedOneTick) {
+        this.pressedOneTick = pressedOneTick;
     }
 }

@@ -9,9 +9,18 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter {
     @Override
     public void keyPressed(KeyEvent e) {
+        boolean pressedPreviously = false;
         for (Keys key : Keys.values()) {
+            key.setPressedOneTick(false);
             if(e.getKeyCode() == key.getKeyCode()){
+                key.setPressedOneTick(false);
                 key.setPressed(true);
+                if(!pressedPreviously){
+                    key.setPressedOneTick(true);
+                }
+                pressedPreviously = true;
+
+
             }
         }
 
