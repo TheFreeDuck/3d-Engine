@@ -22,14 +22,11 @@ public class GameLoop extends Thread {
     private KeyInput keyInput;
     private World world;
 
-    private KeyHandler keyHandler;
-
     public GameLoop(Frame frame, Panel panel, KeyInput keyInput) {
         this.panel = panel;
         this.world = new World(frame,panel);
         this.frame = frame;
         this.keyInput = keyInput;
-        this.keyHandler = new KeyHandler();
     }
 
     /**
