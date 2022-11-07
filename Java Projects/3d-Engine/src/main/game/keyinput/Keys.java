@@ -23,7 +23,10 @@ public enum Keys {
     private final int keyCode;
     private boolean pressed;
 
+    private boolean pressedOnceTick;
+    //TODO remove unnecessary constructor input for pressed state
     private Keys(boolean pressed, int keyCode) {
+        pressedOnceTick = false;
         this.pressed = pressed;
         this.keyCode = keyCode;
 
@@ -39,5 +42,13 @@ public enum Keys {
 
     public int getKeyCode() {
         return keyCode;
+    }
+
+    public boolean isFirstPressed() {
+        return pressedOnceTick;
+    }
+    
+    public void setFirstPressed(boolean firstPressed) {
+        this.pressedOnceTick = firstPressed;
     }
 }
