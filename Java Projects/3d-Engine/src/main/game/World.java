@@ -4,6 +4,7 @@ import main.game.keyinput.Keys;
 import main.game.math.Point3d;
 import main.game.math.Vector;
 import main.game.math.Vertex;
+import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
 import main.game.world3d.entity.Player;
 import main.game.world3d.shapes.Cuboid;
@@ -11,6 +12,7 @@ import main.game.window.Frame;
 import main.game.window.Panel;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @author Fredrik
@@ -23,8 +25,11 @@ public class World {
     private Frame frame;
     private Panel panel;
 
+    private ArrayList<Object3d> jects = new ArrayList<>();
+
 
     public World(Frame frame, Panel panel) {
+        jects.add()
         this.panel = panel;
         this.frame = frame;
         player = new Player(new Point3d(0, 0, 0), new Orientation(new Vector(1, 0, 0), new Vector(0, 1, 0)), panel);

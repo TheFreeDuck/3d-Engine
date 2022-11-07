@@ -2,6 +2,7 @@ package main.game.world3d.shapes;
 
 import main.game.math.Point3d;
 import main.game.math.Vertex;
+import main.game.world3d.Object3d;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 /**
  * @author Fredrik
  */
-public class Cuboid {
+public class Cuboid extends Object3d {
 
     private double w;
     private double h;
@@ -26,6 +27,7 @@ public class Cuboid {
     private main.game.world3d.shapes.Rectangle r1, r2, r3, r4, r5, r6;
 
     public Cuboid(Point3d p1, double w, double h, double l) {
+        super(p1);
         this.w = w;
         this.h = h;
         this.l = l;
