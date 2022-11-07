@@ -2,16 +2,14 @@ package main.game.world3d;
 
 import main.game.math.Point3d;
 import main.game.math.Vector;
-import main.game.math.Vertex;
-
-import java.util.ArrayList;
+import main.game.world3d.mesh.Mesh;
 
 public abstract class Object3d {
+
+    protected Mesh mesh;
     protected Point3d position;
     protected Orientation orientation;
     protected Vector velocity;
-
-    protected ArrayList<Vertex> vertices;
 
     protected Object3d(Point3d position, Orientation orientation) {
         this.position = position;
