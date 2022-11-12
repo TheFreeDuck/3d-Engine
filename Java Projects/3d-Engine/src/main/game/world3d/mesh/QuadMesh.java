@@ -4,10 +4,10 @@ import main.game.math.Vertex;
 
 import java.util.ArrayList;
 
-public class Mesh {
+public abstract class QuadMesh {
     protected ArrayList<Vertex> vertices;
     protected ArrayList<Edge> edges;
-    protected ArrayList<Face> faces;
+    protected ArrayList<Quad> quads;
 
     public ArrayList<Vertex> getVertices() {
         return vertices;
@@ -25,11 +25,11 @@ public class Mesh {
         this.edges = edges;
     }
 
-    public ArrayList<Face> getFaces() {
-        return faces;
+    public ArrayList<Quad> getFaces() {
+        return quads;
     }
 
-    public void setFaces(ArrayList<Face> faces) {
-        this.faces = faces;
+    public void setFaces(ArrayList<Quad> quads) {
+        this.quads = quads;
     }
 }

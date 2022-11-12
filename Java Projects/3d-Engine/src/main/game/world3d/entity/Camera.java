@@ -1,14 +1,14 @@
 package main.game.world3d.entity;
 
-import main.game.Objects;
 import main.game.math.*;
 import main.game.window.Panel;
 import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
-import main.game.world3d.shapes.Cuboid;
+import main.game.world3d.mesh.QuadMesh;
 import main.game.world3d.shapes.Rectangle;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * @author Fredrik
@@ -29,16 +29,15 @@ public class Camera extends Object3d {
         updatePicturePlane();
     }
 
-    public void drawProjectedObjects(Objects objects, Graphics g) {
-        objects = projectObjects(objects);
-        objects.draw(g);
+    public void drawProjectedObjects(ArrayList<QuadMesh> meshes, Graphics g) {
+        projectMeshes(meshes);
     }
 
-    public Objects projectObjects(Objects objects) {
-        for (Object3d object : objects) {
+    public ArrayList<QuadMesh> projectQuadMesh(ArrayList<QuadMesh> meshes) {
+        for (QuadMesh mesh : meshes) {
             //TODO take in objects and project them
         }
-        return objects;
+        return meshes;
 
     }
 
@@ -49,7 +48,7 @@ public class Camera extends Object3d {
      * @return The projected vertex
      */
 
-    private Vertex projectVertex(Object3d object) {
+    private Vertex projectMesh(Vertex vertex) {
         if (vertex.isInFrontOf(picturePlane.getVtx1(), orientation.getForward())) {
             vertex.setInFrame(true);
             Ray ray = new Ray(vertex, observer);
@@ -82,6 +81,16 @@ public class Camera extends Object3d {
         }
         return vertex;
 
+    }
+
+    private void projectMeshes(){
+
+    }
+
+    private void projectMeshes(ArrayList<QuadMesh> meshes){
+        for (QuadMesh mesh : meshes){
+
+        }
     }
 
     @Override
