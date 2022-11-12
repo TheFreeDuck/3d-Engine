@@ -7,7 +7,6 @@ import main.game.world3d.Orientation;
 import main.game.world3d.mesh.QuadMesh;
 import main.game.world3d.shapes.Rectangle;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -29,68 +28,59 @@ public class Camera extends Object3d {
         updatePicturePlane();
     }
 
-    public void drawProjectedObjects(ArrayList<QuadMesh> meshes, Graphics g) {
-        projectMeshes(meshes);
-    }
-
-    public ArrayList<QuadMesh> projectQuadMesh(ArrayList<QuadMesh> meshes) {
+    public ArrayList<QuadMesh> projectQuadMeshes(ArrayList<QuadMesh> meshes) {
         for (QuadMesh mesh : meshes) {
-            //TODO take in objects and project them
+            projectMesh(mesh);
         }
         return meshes;
-
     }
 
-    /**
-     * projects a vertex on the picture plane
-     *
-     * @param vertex The vertex to be projected
-     * @return The projected vertex
-     */
-
-    private Vertex projectMesh(Vertex vertex) {
-        if (vertex.isInFrontOf(picturePlane.getVtx1(), orientation.getForward())) {
-            vertex.setInFrame(true);
-            Ray ray = new Ray(vertex, observer);
-            double a = picturePlane.getVtx1().getY() * (picturePlane.getVtx2().getZ() - picturePlane.getVtx3().getZ()) + picturePlane.getVtx2().getY() * (picturePlane.getVtx3().getZ() - picturePlane.getVtx1().getZ()) + picturePlane.getVtx3().getY() * (picturePlane.getVtx1().getZ() - picturePlane.getVtx2().getZ());
-            double b = picturePlane.getVtx1().getZ() * (picturePlane.getVtx2().getX() - picturePlane.getVtx3().getX()) + picturePlane.getVtx2().getZ() * (picturePlane.getVtx3().getX() - picturePlane.getVtx1().getX()) + picturePlane.getVtx3().getZ() * (picturePlane.getVtx1().getX() - picturePlane.getVtx2().getX());
-            double c = picturePlane.getVtx1().getX() * (picturePlane.getVtx2().getY() - picturePlane.getVtx3().getY()) + picturePlane.getVtx2().getX() * (picturePlane.getVtx3().getY() - picturePlane.getVtx1().getY()) + picturePlane.getVtx3().getX() * (picturePlane.getVtx1().getY() - picturePlane.getVtx2().getY());
-            double d = -picturePlane.getVtx1().getX() * (picturePlane.getVtx2().getY() * picturePlane.getVtx3().getZ() - picturePlane.getVtx3().getY() * picturePlane.getVtx2().getZ()) - picturePlane.getVtx2().getX() * (picturePlane.getVtx3().getY() * picturePlane.getVtx1().getZ() - picturePlane.getVtx1().getY() * picturePlane.getVtx3().getZ()) - picturePlane.getVtx3().getX() * (picturePlane.getVtx1().getY() * picturePlane.getVtx2().getZ() - picturePlane.getVtx2().getY() * picturePlane.getVtx1().getZ());
-            double t = -(a * ray.getP1().getX() + b * ray.getP1().getY() + c * ray.getP1().getX() + d) / (a * ray.getVector().getX() + b * ray.getVector().getY() + c * ray.getVector().getZ());
-            if (t > 0) {
-                vertex.setInFrame(true);
-
-                Point3d intersect = new Point3d(ray.getP1().getX() + ray.getVector().getX() * t, ray.getP1().getY() + ray.getVector().getY() * t, ray.getP1().getZ() + ray.getVector().getZ() * t);
-                Vector hypotenuse = new Vector(intersect, picturePlane.getVtx1());
-                double length = hypotenuse.scalar();
-                double angle;
-                if (intersect.isInFrontOf(picturePlane.getVtx1(), orientation.getUp())) {
-                    angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight()) * -1;
-                    vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
-                } else {
-                    angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight());
-
-                }
-                vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
-            } else if (t > 0) {
-                vertex.setInFrame(false);
+    private void projectMesh(QuadMesh mesh) {
+        ArrayList<Integer> verticesBehind = new ArrayList<>();
+        for (int i = 0; i < mesh.getVertices().size(); i++) {
+            if (mesh.getVertices().get(i).isInFrontOf(picturePlane.getVtx1(), orientation.getForward())) {
+                projectVertexInFrontOfCamera(mesh.getVertices().get(i));
+            } else {
+                verticesBehind.add(i);
             }
+        }
+        for (int i : verticesBehind) {
+            projectVertexBehindCamera(mesh.getVertices().get(i), mesh.getVertices().get(i).);
+        }
+    }
+
+    private Vertex projectVertexInFrontOfCamera(Vertex vertex) {
+        Ray ray = new Ray(vertex, observer);
+        Point3d intersect = ray.intersectWithPlane(picturePlane);
+        Vector hypotenuse = new Vector(intersect, picturePlane.getVtx1());
+        double length = hypotenuse.scalar();
+        double angle;
+        if (intersect.isInFrontOf(picturePlane.getVtx1(), orientation.getUp())) {
+            angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight()) * -1;
+            vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
         } else {
-            vertex.setInFrame(false);
-            //TODO if the vertex is behind the camera. draw a ray between the vertex behind the camera and a vertex it is connected to which is in front of the camera and find the intersect of the ray with the picture plane to find where to project the vertex
+            angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight());
+
         }
+        vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
         return vertex;
-
     }
 
-    private void projectMeshes(){
-
-    }
-
-    private void projectMeshes(ArrayList<QuadMesh> meshes){
-        for (QuadMesh mesh : meshes){
+    private Vertex projectVertexBehindCamera(Vertex vertex, Vertex connectedVertex) {
+        Ray ray = new Ray(vertex, connectedVertex);
+        Point3d intersect = ray.intersectWithPlane(picturePlane);
+        Vector hypotenuse = new Vector(intersect, picturePlane.getVtx1());
+        double length = hypotenuse.scalar();
+        double angle;
+        if (intersect.isInFrontOf(picturePlane.getVtx1(), orientation.getUp())) {
+            angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight()) * -1;
+            vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
+        } else {
+            angle = Math.PI - hypotenuse.angleBetweenVector(orientation.getRight());
 
         }
+        vertex.setP2d(new Point2d(Math.cos(angle) * length * (panel.getWidth() / picturePlane.getW()), Math.sin(angle) * length * (panel.getHeight() / picturePlane.getH())));
+        return vertex;
     }
 
     @Override
