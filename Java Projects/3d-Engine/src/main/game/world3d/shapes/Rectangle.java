@@ -1,5 +1,6 @@
 package main.game.world3d.shapes;
 
+import main.game.math.Point2d;
 import main.game.math.Point3d;
 import main.game.math.Vector;
 import main.game.math.Vertex;
