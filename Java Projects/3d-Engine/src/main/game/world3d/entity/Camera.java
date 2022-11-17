@@ -8,6 +8,7 @@ import main.game.world3d.mesh.Edge;
 import main.game.world3d.mesh.Mesh;
 import main.game.world3d.shapes.Rectangle;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -66,6 +67,13 @@ public class Camera extends Object3d {
         Point3d intersect = ray.intersectWithPlane(picturePlane);
         vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation, panel));
         return vertex;
+    }
+
+    public void drawProjectedObjects(ArrayList<Mesh> meshes, Graphics g) {
+        for (Mesh mesh : meshes) {
+            mesh.draw(g);
+        }
+
     }
 
     @Override

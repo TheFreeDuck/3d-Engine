@@ -21,6 +21,7 @@ public class Rectangle {
     private Color color;
 
     public Rectangle(Point3d p1, Point3d p2, Point3d p3, Point3d p4) {
+        this.vertices = new ArrayList<>();
         vertices.add(new Vertex(p1));
         vertices.add(new Vertex(p2));
         vertices.add(new Vertex(p3));
@@ -37,6 +38,7 @@ public class Rectangle {
     }
 
     public Rectangle(Vertex vtx1, Vertex vtx2, Vertex vtx3, Vertex vtx4) {
+        this.vertices = new ArrayList<>();
         vertices.add(new Vertex(vtx1));
         vertices.add(new Vertex(vtx2));
         vertices.add(new Vertex(vtx3));

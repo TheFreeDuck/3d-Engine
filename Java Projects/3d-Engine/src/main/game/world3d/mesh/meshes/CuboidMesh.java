@@ -6,10 +6,12 @@ import main.game.world3d.mesh.Edge;
 import main.game.world3d.mesh.Triangle;
 import main.game.world3d.mesh.Mesh;
 
-public class Cuboid extends Mesh {
+import java.util.ArrayList;
+
+public class CuboidMesh extends Mesh {
     double width, height, length;
     Point3d position;
-    public Cuboid(double height,double width,double length,Point3d position) {
+    public CuboidMesh(double height, double width, double length, Point3d position) {
         this.width = width;
         this.height = height;
         this.length = length;
