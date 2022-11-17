@@ -4,7 +4,6 @@ import main.game.math.Point3d;
 import main.game.math.Vector;
 import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
-import main.game.world3d.mesh.QuadMesh;
 
 /**
  * @author Fredrik

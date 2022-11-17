@@ -4,7 +4,8 @@ import main.game.math.*;
 import main.game.window.Panel;
 import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
-import main.game.world3d.mesh.QuadMesh;
+import main.game.world3d.mesh.Edge;
+import main.game.world3d.mesh.Mesh;
 import main.game.world3d.shapes.Rectangle;
 
 import java.util.ArrayList;
@@ -28,38 +29,42 @@ public class Camera extends Object3d {
         updatePicturePlane();
     }
 
-    public ArrayList<QuadMesh> projectQuadMeshes(ArrayList<QuadMesh> meshes) {
-        for (QuadMesh mesh : meshes) {
+    public ArrayList<Mesh> projectMeshes(ArrayList<Mesh> meshes) {
+        for (Mesh mesh : meshes) {
             projectMesh(mesh);
         }
         return meshes;
     }
 
-    private void projectMesh(QuadMesh mesh) {
-        ArrayList<Integer> verticesBehind = new ArrayList<>();
-        for (int i = 0; i < mesh.getVertices().size(); i++) {
-            if (mesh.getVertices().get(i).isInFrontOf(picturePlane.getVtx1(), orientation.getForward())) {
-                projectVertexInFrontOfCamera(mesh.getVertices().get(i));
-            } else {
-                verticesBehind.add(i);
+    private void projectMesh(Mesh mesh) {
+        for (Edge edge : mesh.getEdges()) {
+            if (mesh.getVertices().get(edge.getV1()).isInFrontOf(observer, orientation.getForward())) {
+                projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1()));
+                if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
+                    projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2()));
+                } else {
+                    projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1()));
+                }
+            } else if(mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())){
+                projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2()));
+            }else{
+                mesh.getVertices().get(edge.getV1()).setInFrame(false);
+                mesh.getVertices().get(edge.getV2()).setInFrame(false);
             }
-        }
-        for (int i : verticesBehind) {
-            projectVertexBehindCamera(mesh.getVertices().get(i), mesh.getVertices().get(i).);
         }
     }
 
     private Vertex projectVertexInFrontOfCamera(Vertex vertex) {
         Ray ray = new Ray(vertex, observer);
         Point3d intersect = ray.intersectWithPlane(picturePlane);
-        vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation,panel));
+        vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation, panel));
         return vertex;
     }
 
     private Vertex projectVertexBehindCamera(Vertex vertex, Vertex connectedVertex) {
         Ray ray = new Ray(vertex, connectedVertex);
         Point3d intersect = ray.intersectWithPlane(picturePlane);
-        vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation,panel));
+        vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation, panel));
         return vertex;
     }
 

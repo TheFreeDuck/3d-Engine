@@ -2,11 +2,11 @@ package main.game.world3d;
 
 import main.game.math.Point3d;
 import main.game.math.Vector;
-import main.game.world3d.mesh.QuadMesh;
+import main.game.world3d.mesh.Mesh;
 
 public abstract class Object3d {
 
-    protected QuadMesh quadMesh;
+    protected Mesh mesh;
     protected Point3d position;
     protected Orientation orientation;
     protected Vector velocity;
@@ -17,7 +17,7 @@ public abstract class Object3d {
         velocity = new Vector(0, 0, 0);
     }
 
-    protected abstract void update();
+    public abstract void update();
 
     public Point3d getPosition() {
         return position;
@@ -35,8 +35,8 @@ public abstract class Object3d {
         this.orientation = orientation;
     }
 
-    public QuadMesh getQuadMesh() {
-        return quadMesh;
+    public Mesh getQuadMesh() {
+        return mesh;
     }
 
     public Vector getVelocity() {

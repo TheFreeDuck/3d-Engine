@@ -3,10 +3,10 @@ package main.game.world3d.mesh.meshes;
 import main.game.math.Point3d;
 import main.game.math.Vertex;
 import main.game.world3d.mesh.Edge;
-import main.game.world3d.mesh.Quad;
-import main.game.world3d.mesh.QuadMesh;
+import main.game.world3d.mesh.Triangle;
+import main.game.world3d.mesh.Mesh;
 
-public class Cuboid extends QuadMesh {
+public class Cuboid extends Mesh {
     double width, height, length;
     Point3d position;
     public Cuboid(double height,double width,double length,Point3d position) {
@@ -37,12 +37,12 @@ public class Cuboid extends QuadMesh {
         edges.add(new Edge(5,6)); //index 10
         edges.add(new Edge(6,7)); //index 11
 
-        quads.add(new Quad(0,2));
-        quads.add(new Quad(2,11));
-        quads.add(new Quad(9,11));
-        quads.add(new Quad(7,8));
-        quads.add(new Quad(7,2));
-        quads.add(new Quad(3,4));
+        triangles.add(new Triangle(0,2));
+        triangles.add(new Triangle(2,11));
+        triangles.add(new Triangle(9,11));
+        triangles.add(new Triangle(7,8));
+        triangles.add(new Triangle(7,2));
+        triangles.add(new Triangle(3,4));
 
     }
 }
