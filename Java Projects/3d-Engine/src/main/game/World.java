@@ -4,15 +4,13 @@ import main.game.keyinput.Keys;
 import main.game.math.Point3d;
 import main.game.math.Vector;
 import main.game.math.Vertex;
-import main.game.world3d.Object3d;
-import main.game.world3d.Orientation;
-import main.game.world3d.entity.Player;
 import main.game.window.Frame;
 import main.game.window.Panel;
+import main.game.world3d.Orientation;
+import main.game.world3d.entity.Player;
 import main.game.world3d.shapes.Cuboid;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 /**
  * @author Fredrik
@@ -51,6 +49,7 @@ public class World {
     public void update() {
         objects.update();
         player.update();
+        player.getCamera().update(objects.meshes());
     }
 
     public void draw(Graphics g) {

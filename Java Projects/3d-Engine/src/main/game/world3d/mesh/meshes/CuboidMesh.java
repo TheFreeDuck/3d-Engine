@@ -3,10 +3,8 @@ package main.game.world3d.mesh.meshes;
 import main.game.math.Point3d;
 import main.game.math.Vertex;
 import main.game.world3d.mesh.Edge;
-import main.game.world3d.mesh.Triangle;
 import main.game.world3d.mesh.Mesh;
-
-import java.util.ArrayList;
+import main.game.world3d.mesh.Triangle;
 
 public class CuboidMesh extends Mesh {
     double width, height, length;

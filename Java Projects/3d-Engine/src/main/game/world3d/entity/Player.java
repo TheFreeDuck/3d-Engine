@@ -5,6 +5,7 @@ import main.game.window.Panel;
 import main.game.math.Point3d;
 import main.game.math.Vector;
 import main.game.world3d.Orientation;
+import main.game.world3d.entity.camera.Camera;
 
 public class Player extends Entity {
     private Vector movement;

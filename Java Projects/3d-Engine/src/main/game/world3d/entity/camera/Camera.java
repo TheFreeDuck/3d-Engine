@@ -1,4 +1,4 @@
-package main.game.world3d.entity;
+package main.game.world3d.entity.camera;
 
 import main.game.math.*;
 import main.game.window.Panel;
@@ -58,14 +58,16 @@ public class Camera extends Object3d {
     private Vertex projectVertexInFrontOfCamera(Vertex vertex) {
         Ray ray = new Ray(vertex, observer);
         Point3d intersect = ray.intersectWithPlane(picturePlane);
-        vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation, panel));
+        if(intersect != null){
+            vertex.setP2d(picturePlane.project3dPointOnPanel(intersect, orientation, panel));
+        }
         return vertex;
     }
 
     private Vertex projectVertexBehindCamera(Vertex vertex, Vertex connectedVertex) {
         Ray ray = new Ray(vertex, connectedVertex);
         Point3d intersect = ray.intersectWithPlane(picturePlane);
-        vertex.setP2d(picturePlane.project2dPointOnPanel(intersect, orientation, panel));
+        vertex.setP2d(picturePlane.project3dPointOnPanel(intersect, orientation, panel));
         return vertex;
     }
 
@@ -76,8 +78,11 @@ public class Camera extends Object3d {
 
     }
 
-    @Override
-    public void update() {
+    public void update(){
+
+    }
+    public void update(ArrayList<Mesh> meshes) {
+        projectMeshes(meshes);
         updatePicturePlane();
     }
 

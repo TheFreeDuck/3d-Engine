@@ -1,4 +1,4 @@
-package main.game.world3d.entity;
+package main.game.world3d.entity.camera;
 
 import main.game.math.Point2d;
 import main.game.math.Point3d;
@@ -19,7 +19,7 @@ public class PicturePlane extends Rectangle {
         return aspectRatio;
     }
 
-    public Point2d project2dPointOnPanel(Point3d intersect, Orientation orientation, Panel panel) {
+    public Point2d project3dPointOnPanel(Point3d intersect, Orientation orientation, Panel panel) {
         Vector hypotenuse = new Vector(intersect, this.getVtx1());
         double length = hypotenuse.scalar();
         double angle;
