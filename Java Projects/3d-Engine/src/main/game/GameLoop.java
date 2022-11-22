@@ -1,6 +1,5 @@
 package main.game;
 
-import main.game.keyinput.KeyHandler;
 import main.game.keyinput.KeyInput;
 import main.game.window.Frame;
 import main.game.window.Panel;

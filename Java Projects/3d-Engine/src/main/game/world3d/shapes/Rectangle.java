@@ -1,5 +1,6 @@
 package main.game.world3d.shapes;
 
+import main.game.math.Point2d;
 import main.game.math.Point3d;
 import main.game.math.Vector;
 import main.game.math.Vertex;
@@ -19,30 +20,29 @@ public class Rectangle {
     private Vector v1, v2;
     private Color color;
 
-    Vertex vtx1;
-    Vertex vtx2;
-    Vertex vtx3;
-    Vertex vtx4;
-
     public Rectangle(Point3d p1, Point3d p2, Point3d p3, Point3d p4) {
+        this.vertices = new ArrayList<>();
+        vertices.add(new Vertex(p1));
+        vertices.add(new Vertex(p2));
+        vertices.add(new Vertex(p3));
+        vertices.add(new Vertex(p4));
 
         w = p1.getDistanceFromPoint(p2);
         h = p2.getDistanceFromPoint(p3);
 
-        this.vtx1 = new Vertex(p1);
-        this.vtx2 = new Vertex(p2);
-        this.vtx3 = new Vertex(p3);
-        this.vtx4 = new Vertex(p4);
+        v1 = new Vector(p1, p2);
+        v2 = new Vector(p1, p4);
 
         color = Color.green;
 
     }
 
     public Rectangle(Vertex vtx1, Vertex vtx2, Vertex vtx3, Vertex vtx4) {
-        this.vtx1 = vtx1;
-        this.vtx2 = vtx2;
-        this.vtx3 = vtx3;
-        this.vtx4 = vtx4;
+        this.vertices = new ArrayList<>();
+        vertices.add(new Vertex(vtx1));
+        vertices.add(new Vertex(vtx2));
+        vertices.add(new Vertex(vtx3));
+        vertices.add(new Vertex(vtx4));
 
         w = vtx1.getDistanceFromPoint(vtx2);
         h = vtx2.getDistanceFromPoint(vtx3);
@@ -65,26 +65,6 @@ public class Rectangle {
         v1 = new Vector(p1, vertices.get(1));
         v2 = new Vector(p1, vertices.get(3));
 
-    }
-
-    public ArrayList<Vertex> listOfPoints() {
-        ArrayList<Vertex> points = new ArrayList<>();
-        points.add(vtx1);
-        points.add(vtx2);
-        points.add(vtx3);
-        points.add(vtx4);
-        return points;
-    }
-
-    public void draw(Graphics g) {
-        g.setColor(Color.white);
-        int[] xPoly = {(int) vtx1.getP2d().getX(), (int) vtx2.getP2d().getX(), (int) vtx3.getP2d().getX(), (int) vtx4.getP2d().getX()};
-        int[] yPoly = {(int) vtx1.getP2d().getY(), (int) vtx2.getP2d().getY(), (int) vtx3.getP2d().getY(), (int) vtx4.getP2d().getY()};
-        //g.setColor(new Color((int) (Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255)));
-        g.setColor(color);
-        if (vtx1.isInFrame()) {
-            g.drawPolygon(xPoly, yPoly, 4);
-        }
     }
 
     public double getW() {
@@ -120,44 +100,41 @@ public class Rectangle {
     }
 
     public Vertex getVtx1() {
-        return vtx1;
+        return vertices.get(0);
     }
 
     public void setVtx1(Vertex vtx1) {
-        this.vtx1 = vtx1;
+        vertices.set(0,vtx1);
     }
 
     public Vertex getVtx2() {
-        return vtx2;
+        return vertices.get(1);
     }
 
     public void setVtx2(Vertex vtx2) {
-        this.vtx2 = vtx2;
+        vertices.set(1,vtx2);
     }
 
     public Vertex getVtx3() {
-        return vtx3;
+        return vertices.get(2);
     }
 
     public void setVtx3(Vertex vtx3) {
-        this.vtx3 = vtx3;
+        vertices.set(2,vtx3);
     }
 
     public Vertex getVtx4() {
-        return vtx4;
+        return vertices.get(3);
     }
 
     public void setVtx4(Vertex vtx4) {
-        this.vtx4 = vtx4;
+        vertices.set(3,vtx4);
     }
 
     @Override
     public String toString() {
         return "Rectangle{" +
-                "vtx1=" + vtx1 +
-                ", vtx2=" + vtx2 +
-                ", vtx3=" + vtx3 +
-                ", vtx4=" + vtx4 +
+                "vertices=" + vertices +
                 '}';
     }
 }
