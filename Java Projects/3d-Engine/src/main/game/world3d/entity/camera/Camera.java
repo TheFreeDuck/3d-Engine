@@ -83,8 +83,8 @@ public class Camera extends Object3d {
 
     }
     public void update(ArrayList<Mesh> meshes) {
-        projectMeshes(meshes);
         updatePicturePlane();
+        projectMeshes(meshes);
     }
 
     private void updatePicturePlane() {
