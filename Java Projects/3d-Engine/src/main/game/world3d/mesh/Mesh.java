@@ -1,6 +1,7 @@
 package main.game.world3d.mesh;
 
 import main.game.math.Vertex;
+import main.game.world3d.shapes.Triangle;
 
 import java.awt.*;
 import java.util.ArrayList;
