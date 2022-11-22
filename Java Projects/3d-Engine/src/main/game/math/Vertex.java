@@ -9,11 +9,10 @@ import java.util.ArrayList;
 public class Vertex extends Point3d {
 
     private Point2d p2D = new Point2d(0,0);
-    private ArrayList<Integer> connectedVertices;
+    private ArrayList<Vertex> connectedVertices;
 
     public Vertex(double x, double y, double z) {
         super(x, y, z);
-        connectedVertices = new ArrayList<>();
         p2D = new Point2d(0,0);
     }
 
@@ -32,9 +31,6 @@ public class Vertex extends Point3d {
     @Override
     public Vertex addPoint(double x, double y, double z) {
         return new Vertex(this.getX() + x, this.getY() + y, this.getZ() + z);
-    }
-    public void addConnectedVertex(int index){
-        connectedVertices.add(index);
     }
 
 }

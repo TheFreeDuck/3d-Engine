@@ -1,7 +1,5 @@
 package main.game.math;
 
-import main.game.world3d.shapes.Rectangle;
-
 /**
  * @author Fredrik
  */
@@ -22,19 +20,6 @@ public class Ray {
      */
     public Vector getVector() {
         return new Vector(p2.getX() - p1.getX(), p2.getY() - p1.getY(), p2.getZ() - p1.getZ());
-    }
-
-    public Point3d intersectWithPlane(Rectangle plane) {
-        double a = plane.getVtx1().getY() * (plane.getVtx2().getZ() - plane.getVtx3().getZ()) + plane.getVtx2().getY() * (plane.getVtx3().getZ() - plane.getVtx1().getZ()) + plane.getVtx3().getY() * (plane.getVtx1().getZ() - plane.getVtx2().getZ());
-        double b = plane.getVtx1().getZ() * (plane.getVtx2().getX() - plane.getVtx3().getX()) + plane.getVtx2().getZ() * (plane.getVtx3().getX() - plane.getVtx1().getX()) + plane.getVtx3().getZ() * (plane.getVtx1().getX() - plane.getVtx2().getX());
-        double c = plane.getVtx1().getX() * (plane.getVtx2().getY() - plane.getVtx3().getY()) + plane.getVtx2().getX() * (plane.getVtx3().getY() - plane.getVtx1().getY()) + plane.getVtx3().getX() * (plane.getVtx1().getY() - plane.getVtx2().getY());
-        double d = -plane.getVtx1().getX() * (plane.getVtx2().getY() * plane.getVtx3().getZ() - plane.getVtx3().getY() * plane.getVtx2().getZ()) - plane.getVtx2().getX() * (plane.getVtx3().getY() * plane.getVtx1().getZ() - plane.getVtx1().getY() * plane.getVtx3().getZ()) - plane.getVtx3().getX() * (plane.getVtx1().getY() * plane.getVtx2().getZ() - plane.getVtx2().getY() * plane.getVtx1().getZ());
-        double t = -(a * this.getP1().getX() + b * this.getP1().getY() + c * this.getP1().getX() + d) / (a * this.getVector().getX() + b * this.getVector().getY() + c * this.getVector().getZ());
-        if (t > 0) {
-            return new Point3d(this.getP1().getX() + this.getVector().getX() * t, this.getP1().getY() + this.getVector().getY() * t, this.getP1().getZ() + this.getVector().getZ() * t);
-        }else{
-            return null;
-        }
     }
 
     public double length() {

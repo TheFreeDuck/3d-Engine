@@ -1,28 +1,46 @@
 package main.game;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
-
-import main.game.world3d.Object3d;
-import main.game.world3d.mesh.Mesh;
+import main.game.world3d.shapes.Cuboid;
 
 /**
+ *
  * @author Fredrik
  */
-public class Objects extends ArrayList<Object3d> {
+public class Objects {
+    private ArrayList<Cuboid> cuboids;
 
-    public ArrayList<Mesh> meshes() {
-        ArrayList<Mesh> meshes = new ArrayList<>();
-        for (Object3d object : this) {
-            meshes.add(object.getMesh());
-        }
-        return meshes;
+    public Objects() {
+        cuboids = new ArrayList<>();
     }
 
-    public void update() {
-        for (Object3d object : this) {
-            object.update();
+    public ArrayList<Cuboid> getCuboids() {
+        return cuboids;
+    }
+
+    public void setCuboids(ArrayList<Cuboid> cuboids) {
+        this.cuboids = cuboids;
+    }
+    
+    public void addCuboid(Cuboid cuboid){
+        cuboids.add(cuboid);
+    }
+    
+    public void draw(Graphics g){
+        for (Cuboid cuboid : cuboids) {
+            cuboid.draw(g);
+        }
+    }
+    
+    public void update(){
+        for(Cuboid cuboid : cuboids){
+            cuboid.update();
         }
     }
 
-
+    
+    
+    
+    
 }
