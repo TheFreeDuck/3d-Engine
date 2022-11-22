@@ -181,10 +181,10 @@ input[type=checkbox] {
 footer {
   display: block;
   position: relative;
-  bottom: 0;
   border-top: 2px solid white;
   padding: 30px 0px 30px;
   background-color: #20578e;
+  bottom: 0%;
 }
 
 #wrapper {
