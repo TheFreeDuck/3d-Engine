@@ -16,7 +16,8 @@ public class Player extends Entity {
         super(position, orientation);
         camera = new Camera(position, orientation,panel);
         velocity = new Vector(0, 0, 0);
-        movementSpeed = 0.1;
+        movement = new Vector(0, 0, 0);
+        movementSpeed = 0;
     }
 
     @Override

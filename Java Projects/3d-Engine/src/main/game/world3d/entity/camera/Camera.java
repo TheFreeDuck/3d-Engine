@@ -73,7 +73,8 @@ public class Camera extends Object3d {
 
     public void drawProjectedObjects(ArrayList<Mesh> meshes, Graphics g) {
         for (Mesh mesh : meshes) {
-            mesh.draw(g);
+            //mesh.drawVertices(g);
+            mesh.drawEdges(g);
         }
 
     }

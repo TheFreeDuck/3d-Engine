@@ -67,17 +67,6 @@ public class Rectangle {
 
     }
 
-    /*public void draw(Graphics g) {
-        g.setColor(Color.white);
-        int[] xPoly = {(int) vtx1.getP2d().getX(), (int) vtx2.getP2d().getX(), (int) vtx3.getP2d().getX(), (int) vtx4.getP2d().getX()};
-        int[] yPoly = {(int) vtx1.getP2d().getY(), (int) vtx2.getP2d().getY(), (int) vtx3.getP2d().getY(), (int) vtx4.getP2d().getY()};
-        //g.setColor(new Color((int) (Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255)));
-        g.setColor(color);
-        if (vtx1.isInFrame()) {
-            g.drawPolygon(xPoly, yPoly, 4);
-        }
-    }*/
-
     public double getW() {
         return w;
     }

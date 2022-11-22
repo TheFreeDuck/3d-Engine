@@ -20,10 +20,17 @@ public abstract class Mesh {
         return vertices;
     }
 
-    public void draw(Graphics g){
+    public void drawVertices(Graphics g){
         for(Vertex v : vertices){
             g.setColor(Color.white);
             g.fillRect((int) v.getP2d().getX(), (int) v.getP2d().getY(), 5, 5);
+        }
+    }
+
+    public void drawEdges(Graphics g){
+        for(Edge edge : edges){
+            g.setColor(Color.white);
+            g.drawLine((int) vertices.get(edge.v1).getP2d().getX(), (int) vertices.get(edge.v1).getP2d().getY(), (int) vertices.get(edge.v2).getP2d().getX(), (int) vertices.get(edge.v2).getP2d().getY());
         }
     }
 
@@ -45,5 +52,9 @@ public abstract class Mesh {
 
     public void setFaces(ArrayList<Triangle> triangles) {
         this.triangles = triangles;
+    }
+
+    public void setVertex(int i, Vertex vertex) {
+        vertices.set(i, vertex);
     }
 }

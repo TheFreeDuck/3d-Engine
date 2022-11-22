@@ -2,6 +2,7 @@ package main.game.world3d.shapes;
 
 import main.game.math.Point3d;
 import main.game.math.Vector;
+import main.game.math.Vertex;
 import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
 import main.game.world3d.mesh.meshes.CuboidMesh;

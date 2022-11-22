@@ -28,7 +28,6 @@ public class Ray {
         double a = plane.getVtx1().getY() * (plane.getVtx2().getZ() - plane.getVtx3().getZ()) + plane.getVtx2().getY() * (plane.getVtx3().getZ() - plane.getVtx1().getZ()) + plane.getVtx3().getY() * (plane.getVtx1().getZ() - plane.getVtx2().getZ());
         double b = plane.getVtx1().getZ() * (plane.getVtx2().getX() - plane.getVtx3().getX()) + plane.getVtx2().getZ() * (plane.getVtx3().getX() - plane.getVtx1().getX()) + plane.getVtx3().getZ() * (plane.getVtx1().getX() - plane.getVtx2().getX());
         double c = plane.getVtx1().getX() * (plane.getVtx2().getY() - plane.getVtx3().getY()) + plane.getVtx2().getX() * (plane.getVtx3().getY() - plane.getVtx1().getY()) + plane.getVtx3().getX() * (plane.getVtx1().getY() - plane.getVtx2().getY());
-        System.out.println(plane.getVtx1().getY());
         double d = -plane.getVtx1().getX() * (plane.getVtx2().getY() * plane.getVtx3().getZ() - plane.getVtx3().getY() * plane.getVtx2().getZ()) - plane.getVtx2().getX() * (plane.getVtx3().getY() * plane.getVtx1().getZ() - plane.getVtx1().getY() * plane.getVtx3().getZ()) - plane.getVtx3().getX() * (plane.getVtx1().getY() * plane.getVtx2().getZ() - plane.getVtx2().getY() * plane.getVtx1().getZ());
         double t = -(a * this.getP1().getX() + b * this.getP1().getY() + c * this.getP1().getX() + d) / (a * this.getVector().getX() + b * this.getVector().getY() + c * this.getVector().getZ());
         if (t > 0) {

@@ -35,7 +35,7 @@ public abstract class Object3d {
         this.orientation = orientation;
     }
 
-    public Mesh getQuadMesh() {
+    public Mesh getMesh() {
         return mesh;
     }
 
