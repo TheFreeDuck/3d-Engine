@@ -22,8 +22,8 @@ public abstract class Mesh {
 
     public void drawVertices(Graphics g){
         for(Vertex v : vertices){
-            g.setColor(Color.white);
-            g.fillRect((int) v.getP2d().getX(), (int) v.getP2d().getY(), 5, 5);
+            g.setColor(Color.green);
+            g.fillRect((int) v.getP2d().getX(), (int) v.getP2d().getY(), 3, 3);
         }
     }
 
