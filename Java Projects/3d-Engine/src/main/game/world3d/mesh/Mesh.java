@@ -1,5 +1,6 @@
 package main.game.world3d.mesh;
 
+import main.game.math.Point2d;
 import main.game.math.Vertex;
 
 import java.awt.*;
@@ -20,18 +21,21 @@ public abstract class Mesh {
         return vertices;
     }
 
-    public void drawVertices(Graphics g){
-        for(Vertex v : vertices){
-            g.setColor(Color.green);
-            g.fillRect((int) v.getP2d().getX(), (int) v.getP2d().getY(), 3, 3);
+    public void drawVertices(Graphics g, ArrayList<ArrayList<Point2d>> projectedPoints){
+        for(ArrayList<Point2d> points : projectedPoints){
+            for(Point2d point : points){
+                g.setColor(Color.green);
+                g.fillRect((int) point.getX(), (int) point.getY(), 3, 3);
+            }
+
         }
     }
 
     public void drawEdges(Graphics g){
-        for(Edge edge : edges){
+        /*for(Edge edge : edges){
             g.setColor(Color.white);
             g.drawLine((int) vertices.get(edge.v1).getP2d().getX(), (int) vertices.get(edge.v1).getP2d().getY(), (int) vertices.get(edge.v2).getP2d().getX(), (int) vertices.get(edge.v2).getP2d().getY());
-        }
+        }*/
     }
 
     public void setVertices(ArrayList<Vertex> vertices) {

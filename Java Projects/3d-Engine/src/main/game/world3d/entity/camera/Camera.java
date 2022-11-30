@@ -1,6 +1,9 @@
 package main.game.world3d.entity.camera;
 
-import main.game.math.*;
+import main.game.math.Point2d;
+import main.game.math.Point3d;
+import main.game.math.Ray;
+import main.game.math.Vertex;
 import main.game.window.Panel;
 import main.game.world3d.Object3d;
 import main.game.world3d.Orientation;
@@ -28,55 +31,53 @@ public class Camera extends Object3d {
         this.panel = panel;
         this.observer = observer;
         this.orientation = orientation;
-        this.fov = 1;
+        fov = 1;
+
         updatePicturePlane();
     }
 
-    public ArrayList<Mesh> projectMeshes(ArrayList<Mesh> meshes) {
+    public ArrayList<ArrayList<Point2d>> projectMeshes(ArrayList<Mesh> meshes) {
+        ArrayList<ArrayList<Point2d>> projectMeshes = new ArrayList<>();
         for (Mesh mesh : meshes) {
-            projectMesh(mesh);
+            projectMeshes.add(projectMesh(mesh));
         }
-        return meshes;
+        return projectMeshes;
     }
 
-    private void projectMesh(Mesh mesh) {
+    private ArrayList<Point2d> projectMesh(Mesh mesh) {
+        ArrayList<Point2d> projectedPoints = new ArrayList<>();
         for (Edge edge : mesh.getEdges()) {
             if (mesh.getVertices().get(edge.getV1()).isInFrontOf(observer, orientation.getForward())) {
-                projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1()));
+                projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1())));
                 if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
-                    projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2()));
+                    projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2())));
                 } else {
-                    projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1()));
+                    projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1())));
                 }
             } else if(mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())){
-                projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2()));
-            }else{
-                mesh.getVertices().get(edge.getV1()).setInFrame(false);
-                mesh.getVertices().get(edge.getV2()).setInFrame(false);
+                projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
             }
         }
+        return projectedPoints;
     }
 
-    private Vertex projectVertexInFrontOfCamera(Vertex vertex) {
+    private Point2d projectVertexInFrontOfCamera(Vertex vertex) {
         Ray ray = new Ray(vertex, observer);
         Point3d intersect = ray.intersectWithPlane(picturePlane);
-        if(intersect != null){
-            vertex.setP2d(picturePlane.project3dPointOnPanel(intersect, orientation, panel));
-        }
-        return vertex;
+        return picturePlane.project3dPointOnPanel(intersect, orientation, panel);
     }
 
-    private Vertex projectVertexBehindCamera(Vertex vertex, Vertex connectedVertex) {
+    private Point2d projectVertexBehindCamera(Vertex vertex, Vertex connectedVertex) {
         Ray ray = new Ray(vertex, connectedVertex);
         Point3d intersect = ray.intersectWithPlane(picturePlane);
-        vertex.setP2d(picturePlane.project3dPointOnPanel(intersect, orientation, panel));
-        return vertex;
+        return picturePlane.project3dPointOnPanel(intersect, orientation, panel);
     }
 
     public void drawProjectedObjects(ArrayList<Mesh> meshes, Graphics g) {
+        ArrayList<ArrayList<Point2d>> projectedPoints = projectMeshes(meshes);
         for (Mesh mesh : meshes) {
-            mesh.drawEdges(g);
-            mesh.drawVertices(g);
+            //mesh.drawEdges(g,projectedPoints);
+            mesh.drawVertices(g,projectedPoints);
         }
 
     }
@@ -86,7 +87,7 @@ public class Camera extends Object3d {
     }
     public void update(ArrayList<Mesh> meshes) {
         updatePicturePlane();
-        projectMeshes(meshes);
+        //projectMeshes(meshes);
     }
 
     private void updatePicturePlane() {

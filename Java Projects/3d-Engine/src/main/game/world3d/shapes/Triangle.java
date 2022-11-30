@@ -1,10 +1,10 @@
 package main.game.world3d.shapes;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import main.game.math.Point2d;
 import main.game.math.Point3d;
 import main.game.math.Vertex;
+
+import java.awt.*;
 
 /**
  *
@@ -61,15 +61,6 @@ public class Triangle {
 
     public void setVtx3(Vertex vtx3) {
         this.vtx3 = vtx3;
-    }
-    
-    public void draw(Graphics g) {
-        g.setColor(Color.white);
-        int[] xPoly = {(int)vtx1.getP2d().getX(), (int)vtx2.getP2d().getX(), (int)vtx3.getP2d().getX()};
-        int[] yPoly = {(int)vtx1.getP2d().getY(), (int)vtx2.getP2d().getY(), (int)vtx3.getP2d().getY()};
-        //g.setColor(new Color((int) (Math.random() * 255),(int) (Math.random() * 255),(int) (Math.random() * 255)));
-        g.setColor(color);
-        g.drawPolygon(xPoly, yPoly, 3);
     }
     
     

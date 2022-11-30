@@ -18,12 +18,13 @@ public class Frame extends JFrame {
 
     public Frame() {
         this.setTitle("3D Engine");
+        Image icon;
         try {
-            Image icon = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("icon.png")));
-            this.setIconImage(icon);
-            setCursor(getToolkit().createCustomCursor(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("potato.png"))), new Point(0,0), "potato"));
-        } catch (Exception ignored) {
+            icon = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("icon.png")));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+        this.setIconImage(icon);
 
         this.setResizable(true);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -40,7 +41,7 @@ public class Frame extends JFrame {
         panel.startGameLoop();
     }
 
-    public void setFullscreen(Boolean fullscreen){
+    public void setFullscreen(Boolean fullscreen) {
         if (!this.fullscreen == fullscreen) {
             this.fullscreen = fullscreen;
             dispose();
@@ -56,9 +57,11 @@ public class Frame extends JFrame {
             setVisible(true);
             setAlwaysOnTop(true);
             setAlwaysOnTop(false);
+
         }
 
     }
+
     public Panel getPanel() {
         return panel;
     }

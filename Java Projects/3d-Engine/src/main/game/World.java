@@ -49,7 +49,6 @@ public class World {
     public void update() {
         objects.update();
         player.update();
-        player.getCamera().update(objects.meshes());
 
     }
 
