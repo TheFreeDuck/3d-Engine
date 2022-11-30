@@ -4,6 +4,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Objects;
 
 public class Frame extends JFrame {
@@ -20,6 +21,7 @@ public class Frame extends JFrame {
         try {
             Image icon = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("icon.png")));
             this.setIconImage(icon);
+            setCursor(getToolkit().createCustomCursor(ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("potato.png"))), new Point(0,0), "potato"));
         } catch (Exception ignored) {
         }
 
@@ -38,7 +40,7 @@ public class Frame extends JFrame {
         panel.startGameLoop();
     }
 
-    public void setFullscreen(Boolean fullscreen) {
+    public void setFullscreen(Boolean fullscreen){
         if (!this.fullscreen == fullscreen) {
             this.fullscreen = fullscreen;
             dispose();
