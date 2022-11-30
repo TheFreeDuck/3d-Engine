@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author Fredrik
  */
 public class Vertex extends Point3d {
-
+//TODO: remove p2D
     private Point2d p2D = new Point2d(0,0);
     private ArrayList<Integer> connectedVertices;
 

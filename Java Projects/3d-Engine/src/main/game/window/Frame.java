@@ -54,11 +54,9 @@ public class Frame extends JFrame {
             setVisible(true);
             setAlwaysOnTop(true);
             setAlwaysOnTop(false);
-
         }
 
     }
-
     public Panel getPanel() {
         return panel;
     }
