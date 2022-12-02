@@ -23,8 +23,6 @@ public class Camera extends Object3d {
     private PicturePlane picturePlane;
     private double fov;
     private Panel panel;
-    //TODO save projected points in the camera class instead of saving it in the meshes in case of multiple cameras
-    private ArrayList<Point2d> projectedPoints;
 
     public Camera(Point3d observer, Orientation orientation, Panel panel) {
         super(observer, orientation);
