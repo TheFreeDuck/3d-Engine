@@ -31,11 +31,13 @@ public abstract class Mesh {
         }
     }
 
-    public void drawEdges(Graphics g){
-        /*for(Edge edge : edges){
-            g.setColor(Color.white);
-            g.drawLine((int) vertices.get(edge.v1).getP2d().getX(), (int) vertices.get(edge.v1).getP2d().getY(), (int) vertices.get(edge.v2).getP2d().getX(), (int) vertices.get(edge.v2).getP2d().getY());
-        }*/
+    public void drawEdges(Graphics g,ArrayList<ArrayList<Point2d>> projectedPoints){
+        for(ArrayList<Point2d> points : projectedPoints) {
+            for (Edge edge : edges) {
+                g.setColor(Color.white);
+                g.drawLine((int) points.get(edge.v1).getX(), (int) points.get(edge.v1).getY(), (int) points.get(edge.v2).getX(), (int) points.get(edge.v2).getY());
+            }
+        }
     }
 
     public void setVertices(ArrayList<Vertex> vertices) {

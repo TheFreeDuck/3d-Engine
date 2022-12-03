@@ -23,8 +23,6 @@ public class Camera extends Object3d {
     private PicturePlane picturePlane;
     private double fov;
     private Panel panel;
-    //TODO save projected points in the camera class instead of saving it in the meshes in case of multiple cameras
-    private ArrayList<Point2d> projectedPoints;
 
     public Camera(Point3d observer, Orientation orientation, Panel panel) {
         super(observer, orientation);
@@ -37,15 +35,16 @@ public class Camera extends Object3d {
     }
 
     public ArrayList<ArrayList<Point2d>> projectMeshes(ArrayList<Mesh> meshes) {
-        ArrayList<ArrayList<Point2d>> projectMeshes = new ArrayList<>();
+        ArrayList<ArrayList<Point2d>> projectedMeshes = new ArrayList<>();
         for (Mesh mesh : meshes) {
-            projectMeshes.add(projectMesh(mesh));
+            projectedMeshes.add(projectMesh(mesh));
         }
-        return projectMeshes;
+        return projectedMeshes;
     }
 
     private ArrayList<Point2d> projectMesh(Mesh mesh) {
         ArrayList<Point2d> projectedPoints = new ArrayList<>();
+        //FIXME: don't change list order when projecting meshes
         for (Edge edge : mesh.getEdges()) {
             if (mesh.getVertices().get(edge.getV1()).isInFrontOf(observer, orientation.getForward())) {
                 projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1())));
@@ -54,7 +53,7 @@ public class Camera extends Object3d {
                 } else {
                     projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1())));
                 }
-            } else if(mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())){
+            } else if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
                 projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
             }
         }
@@ -74,20 +73,16 @@ public class Camera extends Object3d {
     }
 
     public void drawProjectedObjects(ArrayList<Mesh> meshes, Graphics g) {
-        ArrayList<ArrayList<Point2d>> projectedPoints = projectMeshes(meshes);
+        ArrayList<ArrayList<Point2d>> projectedMeshes = projectMeshes(meshes);
         for (Mesh mesh : meshes) {
-            //mesh.drawEdges(g,projectedPoints);
-            mesh.drawVertices(g,projectedPoints);
+            mesh.drawEdges(g, projectedMeshes);
+            mesh.drawVertices(g, projectedMeshes);
         }
 
     }
 
-    public void update(){
-
-    }
-    public void update(ArrayList<Mesh> meshes) {
+    public void update() {
         updatePicturePlane();
-        //projectMeshes(meshes);
     }
 
     private void updatePicturePlane() {
