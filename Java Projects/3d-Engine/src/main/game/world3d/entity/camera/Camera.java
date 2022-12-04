@@ -44,19 +44,23 @@ public class Camera extends Object3d {
 
     private ArrayList<Point2d> projectMesh(Mesh mesh) {
         ArrayList<Point2d> projectedPoints = new ArrayList<>();
-        //FIXME: don't change list order when projecting meshes
+        for (int i = 0; i < mesh.getVertices().size(); i++) {
+            projectedPoints.add(null);
+        }
+        //FIXME: unnecessary many iterations per vertex when project per edge. iterate each vertex individually and find which edge it is connected to
         for (Edge edge : mesh.getEdges()) {
             if (mesh.getVertices().get(edge.getV1()).isInFrontOf(observer, orientation.getForward())) {
-                projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1())));
+                projectedPoints.set(edge.getV1(),projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1())));
                 if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
-                    projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2())));
+                    projectedPoints.set(edge.getV2(),projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2())));
                 } else {
-                    projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1())));
+                    projectedPoints.set(edge.getV2(),projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1())));
                 }
             } else if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
-                projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
+                projectedPoints.set(edge.getV1(),projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
             }
         }
+        System.out.println(projectedPoints);
         return projectedPoints;
     }
 
