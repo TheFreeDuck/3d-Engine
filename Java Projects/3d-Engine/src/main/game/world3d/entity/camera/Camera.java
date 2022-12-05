@@ -35,27 +35,32 @@ public class Camera extends Object3d {
     }
 
     public ArrayList<ArrayList<Point2d>> projectMeshes(ArrayList<Mesh> meshes) {
-        ArrayList<ArrayList<Point2d>> projectMeshes = new ArrayList<>();
+        ArrayList<ArrayList<Point2d>> projectedMeshes = new ArrayList<>();
         for (Mesh mesh : meshes) {
-            projectMeshes.add(projectMesh(mesh));
+            projectedMeshes.add(projectMesh(mesh));
         }
-        return projectMeshes;
+        return projectedMeshes;
     }
 
     private ArrayList<Point2d> projectMesh(Mesh mesh) {
         ArrayList<Point2d> projectedPoints = new ArrayList<>();
+        for (int i = 0; i < mesh.getVertices().size(); i++) {
+            projectedPoints.add(null);
+        }
+        //FIXME: unnecessary many iterations per vertex when project per edge. iterate each vertex individually and find which edge it is connected to
         for (Edge edge : mesh.getEdges()) {
             if (mesh.getVertices().get(edge.getV1()).isInFrontOf(observer, orientation.getForward())) {
-                projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1())));
+                projectedPoints.set(edge.getV1(),projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV1())));
                 if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
-                    projectedPoints.add(projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2())));
+                    projectedPoints.set(edge.getV2(),projectVertexInFrontOfCamera(mesh.getVertices().get(edge.getV2())));
                 } else {
-                    projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1())));
+                    projectedPoints.set(edge.getV2(),projectVertexBehindCamera(mesh.getVertices().get(edge.getV2()), mesh.getVertices().get(edge.getV1())));
                 }
-            } else if(mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())){
-                projectedPoints.add(projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
+            } else if (mesh.getVertices().get(edge.getV2()).isInFrontOf(observer, orientation.getForward())) {
+                projectedPoints.set(edge.getV1(),projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
             }
         }
+        System.out.println(projectedPoints);
         return projectedPoints;
     }
 
@@ -72,20 +77,16 @@ public class Camera extends Object3d {
     }
 
     public void drawProjectedObjects(ArrayList<Mesh> meshes, Graphics g) {
-        ArrayList<ArrayList<Point2d>> projectedPoints = projectMeshes(meshes);
+        ArrayList<ArrayList<Point2d>> projectedMeshes = projectMeshes(meshes);
         for (Mesh mesh : meshes) {
-            //mesh.drawEdges(g,projectedPoints);
-            mesh.drawVertices(g,projectedPoints);
+            mesh.drawEdges(g, projectedMeshes);
+            mesh.drawVertices(g, projectedMeshes);
         }
 
     }
 
-    public void update(){
-
-    }
-    public void update(ArrayList<Mesh> meshes) {
+    public void update() {
         updatePicturePlane();
-        //projectMeshes(meshes);
     }
 
     private void updatePicturePlane() {
