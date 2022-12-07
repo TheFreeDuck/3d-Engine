@@ -1,4 +1,4 @@
-package main.game.world3d.mesh.meshes;
+package main.game.world3d.mesh.standardmeshes;
 
 import main.game.math.Point3d;
 import main.game.math.Vertex;
@@ -44,5 +44,6 @@ public class CuboidMesh extends Mesh {
         triangles.add(new Triangle(7,2));
         triangles.add(new Triangle(3,4));
 
+        updateVertexConnectedEdges();
     }
 }

@@ -91,4 +91,7 @@ public class GameLoop extends Thread {
         this.running = running;
     }
 
+    public boolean isRunning() {
+        return running;
+    }
 }

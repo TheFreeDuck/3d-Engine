@@ -30,7 +30,6 @@ public class Camera extends Object3d {
         this.observer = observer;
         this.orientation = orientation;
         fov = 1;
-
         updatePicturePlane();
     }
 
@@ -43,6 +42,7 @@ public class Camera extends Object3d {
     }
 
     private ArrayList<Point2d> projectMesh(Mesh mesh) {
+        System.out.println(mesh.getVertices().get(0).getConnectedEdges());
         ArrayList<Point2d> projectedPoints = new ArrayList<>();
         for (int i = 0; i < mesh.getVertices().size(); i++) {
             projectedPoints.add(null);
@@ -60,7 +60,8 @@ public class Camera extends Object3d {
                 projectedPoints.set(edge.getV1(),projectVertexBehindCamera(mesh.getVertices().get(edge.getV1()), mesh.getVertices().get(edge.getV2())));
             }
         }
-        System.out.println(projectedPoints);
+
+
         return projectedPoints;
     }
 

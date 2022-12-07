@@ -10,6 +10,7 @@ public class Edge {
         this.v2 = v2;
     }
 
+
     public int getV1() {
         return v1;
     }

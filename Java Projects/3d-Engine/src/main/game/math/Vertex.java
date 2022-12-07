@@ -7,11 +7,10 @@ import java.util.ArrayList;
  * @author Fredrik
  */
 public class Vertex extends Point3d {
-    private ArrayList<Integer> connectedVertices;
+    private ArrayList<Integer> connectedEdges;
 
     public Vertex(double x, double y, double z) {
         super(x, y, z);
-        connectedVertices = new ArrayList<>();
     }
 
     public Vertex(Point3d point) {
@@ -22,8 +21,14 @@ public class Vertex extends Point3d {
     public Vertex addPoint(double x, double y, double z) {
         return new Vertex(this.getX() + x, this.getY() + y, this.getZ() + z);
     }
-    public void addConnectedVertex(int index){
-        connectedVertices.add(index);
+    public void addConnectedEdge(int index){
+        if(connectedEdges == null){
+            connectedEdges = new ArrayList<>();
+        }
+        connectedEdges.add(index);
     }
 
+    public ArrayList<Integer> getConnectedEdges() {
+        return connectedEdges;
+    }
 }

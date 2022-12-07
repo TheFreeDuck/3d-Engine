@@ -14,4 +14,12 @@ public class Triangle {
         this.edge2 = edge2;
         color = Color.white;
     }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
 }

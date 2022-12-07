@@ -44,4 +44,7 @@ public class Panel extends JPanel {
         return (double)getWidth()/getHeight();
     }
 
+    public GameLoop getGameLoop() {
+        return gameLoop;
+    }
 }

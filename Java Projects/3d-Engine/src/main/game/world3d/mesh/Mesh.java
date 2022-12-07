@@ -40,6 +40,16 @@ public abstract class Mesh {
         }
     }
 
+    protected void updateVertexConnectedEdges(){
+        for (int i = 0; i < vertices.size(); i++) {
+            for (int j = 0; j < edges.size(); j++) {
+                if(edges.get(j).v1 == i || edges.get(j).v2 == i){
+                    vertices.get(i).addConnectedEdge(j);
+                }
+            }
+        }
+    }
+
     public void setVertices(ArrayList<Vertex> vertices) {
         this.vertices = vertices;
     }
