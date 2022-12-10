@@ -62,8 +62,8 @@ public class World {
             player.setPosition(new Point3d(0, 0, 0));
             player.setOrientation(new Orientation(new Vector(1, 0, 0), new Vector(0, 1, 0)));
         }
-        if (Keys.F.isPressed()) {
-            Keys.F.setPressed(false);
+        if (Keys.F.isPressedOneTick()) {
+            Keys.F.setPressedOneTick(false);
             frame.setFullscreen(!frame.isFullscreen());
         }
         if (Keys.ESC.isPressed()) {

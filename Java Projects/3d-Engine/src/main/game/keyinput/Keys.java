@@ -3,33 +3,32 @@ package main.game.keyinput;
 import java.awt.event.KeyEvent;
 
 public enum Keys {
-    A(false, KeyEvent.VK_A),
-    F(false, KeyEvent.VK_F),
-    D(false, KeyEvent.VK_D),
-    W(false, KeyEvent.VK_W),
-    S(false, KeyEvent.VK_S),
-    E(false, KeyEvent.VK_E),
-    Q(false, KeyEvent.VK_Q),
-    R(false, KeyEvent.VK_R),
-    UP(false, KeyEvent.VK_UP),
-    DOWN(false, KeyEvent.VK_DOWN),
-    RIGHT(false, KeyEvent.VK_RIGHT),
-    LEFT(false, KeyEvent.VK_LEFT),
-    ESC(false, KeyEvent.VK_ESCAPE),
-    SPACE(false, KeyEvent.VK_SPACE),
-    CTRL(false, KeyEvent.VK_CONTROL),
-    SHIFT(false, KeyEvent.VK_SHIFT);
+    A(KeyEvent.VK_A),
+    F(KeyEvent.VK_F),
+    D(KeyEvent.VK_D),
+    W(KeyEvent.VK_W),
+    S(KeyEvent.VK_S),
+    E(KeyEvent.VK_E),
+    Q(KeyEvent.VK_Q),
+    R(KeyEvent.VK_R),
+    UP(KeyEvent.VK_UP),
+    DOWN(KeyEvent.VK_DOWN),
+    RIGHT(KeyEvent.VK_RIGHT),
+    LEFT(KeyEvent.VK_LEFT),
+    ESC(KeyEvent.VK_ESCAPE),
+    SPACE(KeyEvent.VK_SPACE),
+    CTRL(KeyEvent.VK_CONTROL),
+    SHIFT(KeyEvent.VK_SHIFT);
 
     private final int keyCode;
     private boolean pressed;
 
-    private boolean pressedOnceTick;
-    //TODO remove unnecessary constructor input for pressed state
-    private Keys(boolean pressed, int keyCode) {
-        pressedOnceTick = false;
-        this.pressed = pressed;
-        this.keyCode = keyCode;
+    private boolean pressedOneTick;
 
+    private Keys(int keyCode) {
+        this.keyCode = keyCode;
+        this.pressed = false;
+        this.pressedOneTick = false;
     }
 
     public boolean isPressed() {
@@ -44,11 +43,11 @@ public enum Keys {
         return keyCode;
     }
 
-    public boolean isFirstPressed() {
-        return pressedOnceTick;
+    public boolean isPressedOneTick() {
+        return pressedOneTick;
     }
-    
-    public void setFirstPressed(boolean firstPressed) {
-        this.pressedOnceTick = firstPressed;
+
+    public void setPressedOneTick(boolean pressedOneTick) {
+        this.pressedOneTick = pressedOneTick;
     }
 }

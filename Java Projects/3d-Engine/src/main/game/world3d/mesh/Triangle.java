@@ -4,14 +4,16 @@ import java.awt.*;
 
 public class Triangle {
 
-    int edge1;
-    int edge2;
+    int vertex1;
+    int vertex2;
+    int vertex3;
 
     Color color;
 
-    public Triangle(int edge1, int edge2) {
-        this.edge1 = edge1;
-        this.edge2 = edge2;
+    public Triangle(int vertex1, int vertex2, int vertex3) {
+        this.vertex1 = vertex1;
+        this.vertex2 = vertex2;
+        this.vertex3 = vertex3;
         color = Color.white;
     }
 

@@ -60,6 +60,13 @@ public class Point3d {
         return Math.sqrt(Math.pow(p.x - x, 2) + Math.pow(p.y - y, 2) + Math.pow(p.z - z, 2));
     }
 
+    public Point3d midpoint(Vertex other) {
+        double x = (this.getX() + other.getX()) / 2;
+        double y = (this.getY() + other.getY()) / 2;
+        double z = (this.getZ() + other.getZ()) / 2;
+        return new Point3d(x, y, z);
+    }
+
     public boolean isInFrontOf(Point3d p,Vector vector){
         return vector.dotProduct(new Vector(p, this)) > 0;
     }

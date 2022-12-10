@@ -34,7 +34,7 @@ public class Ray {
             return new Point3d(this.getP1().getX() + this.getVector().getX() * t, this.getP1().getY() + this.getVector().getY() * t, this.getP1().getZ() + this.getVector().getZ() * t);
         }else{
             //FIXME
-            return new Point3d(0,0,0);
+            return null;
         }
     }
 

@@ -31,11 +31,18 @@ public abstract class Mesh {
         }
     }
 
-    public void drawEdges(Graphics g,ArrayList<ArrayList<Point2d>> projectedPoints){
-        for(ArrayList<Point2d> points : projectedPoints) {
-            for (Edge edge : edges) {
-                g.setColor(Color.white);
-                g.drawLine((int) points.get(edge.v1).getX(), (int) points.get(edge.v1).getY(), (int) points.get(edge.v2).getX(), (int) points.get(edge.v2).getY());
+    public void drawEdges(Graphics g, ArrayList<ArrayList<Point2d>> projectedPoints) {
+        if (!edges.isEmpty()) {
+            for (ArrayList<Point2d> points : projectedPoints) {
+                if (!edges.isEmpty() && !points.isEmpty()) {
+                    // Loop over the edges and draw them using the points in the points list
+                    for (Edge edge : edges) {
+                        if (edge.v1 >= 0 && edge.v1 < points.size() && edge.v2 >= 0 && edge.v2 < points.size()) {
+                            g.setColor(Color.white);
+                            g.drawLine((int) points.get(edge.v1).getX(), (int) points.get(edge.v1).getY(), (int) points.get(edge.v2).getX(), (int) points.get(edge.v2).getY());
+                        }
+                    }
+                }
             }
         }
     }

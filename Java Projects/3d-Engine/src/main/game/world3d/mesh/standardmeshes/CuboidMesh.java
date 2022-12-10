@@ -15,6 +15,7 @@ public class CuboidMesh extends Mesh {
         this.length = length;
         this.position = position;
 
+        // Create vertices
         vertices.add(new Vertex(position));
         vertices.add(vertices.get(0).addPoint(0, 0, height));
         vertices.add(vertices.get(1).addPoint(0, width, 0));
@@ -24,6 +25,7 @@ public class CuboidMesh extends Mesh {
         vertices.add(vertices.get(5).addPoint(0, -width, 0));
         vertices.add(vertices.get(6).addPoint(0, 0, -height));
 
+        // Create edges
         edges.add(new Edge(0,1)); //index 0
         edges.add(new Edge(0,7)); //index 1
         edges.add(new Edge(0,3)); //index 2
@@ -37,12 +39,19 @@ public class CuboidMesh extends Mesh {
         edges.add(new Edge(5,6)); //index 10
         edges.add(new Edge(6,7)); //index 11
 
-        triangles.add(new Triangle(0,2));
-        triangles.add(new Triangle(2,11));
-        triangles.add(new Triangle(9,11));
-        triangles.add(new Triangle(7,8));
-        triangles.add(new Triangle(7,2));
-        triangles.add(new Triangle(3,4));
+        // Create triangles
+        triangles.add(new Triangle(0, 2, 3));
+        triangles.add(new Triangle(0, 1, 2));
+        triangles.add(new Triangle(1, 5, 6));
+        triangles.add(new Triangle(1, 2, 5));
+        triangles.add(new Triangle(4, 5, 6));
+        triangles.add(new Triangle(4, 6, 7));
+        triangles.add(new Triangle(0, 4, 7));
+        triangles.add(new Triangle(0, 3, 7));
+        triangles.add(new Triangle(3, 6, 7));
+        triangles.add(new Triangle(3, 5, 6));
+        triangles.add(new Triangle(0, 1, 4));
+        triangles.add(new Triangle(1, 4, 5));
 
         updateVertexConnectedEdges();
     }

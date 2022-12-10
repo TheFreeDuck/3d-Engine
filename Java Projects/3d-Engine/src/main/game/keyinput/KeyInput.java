@@ -1,32 +1,41 @@
 package main.game.keyinput;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * @author Fredrik
- */
-public class KeyInput extends KeyAdapter {
-    @Override
-    public void keyPressed(KeyEvent e) {
+public class KeyInput implements KeyListener {
+
+    private final Map<Integer, Keys> keys;
+
+    public KeyInput() {
+        this.keys = new HashMap<>();
         for (Keys key : Keys.values()) {
-            key.setFirstPressed(false);
-            if(e.getKeyCode() == key.getKeyCode()){
-                key.setPressed(true);
-                key.setFirstPressed(true);
-            }
+            keys.put(key.getKeyCode(), key);
         }
-
     }
 
-    //TODO if tapped
+    @Override
+    public void keyPressed(KeyEvent e) {
+        Keys key = keys.get(e.getKeyCode());
+        if (key != null) {
+            key.setPressed(true);
+            key.setPressedOneTick(true);
+        }
+    }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        for (Keys key : Keys.values()) {
-            if (e.getKeyCode() == key.getKeyCode()) {
-                key.setPressed(false);
-            }
+        Keys key = keys.get(e.getKeyCode());
+        if (key != null) {
+            key.setPressed(false);
+            key.setPressedOneTick(false);
         }
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // Not implemented
     }
 }
