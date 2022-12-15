@@ -1,7 +1,7 @@
 package main.game.window;
 
 import main.game.GameLoop;
-import main.game.keyinput.KeyInput;
+import main.game.keyinput.KeyHandler;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,16 +16,16 @@ public class Panel extends JPanel {
     private final double aspectRatio = 2;
     private final int width = (int) (height * aspectRatio);
     private GameLoop gameLoop;
-    private KeyInput keyInput;
+    private KeyHandler keyHandler;
     private Frame frame;
 
     public Panel(Frame frame) {
         this.frame = frame;
-        this.keyInput = new KeyInput();
-        gameLoop = new GameLoop(frame,this, keyInput);
+        this.keyHandler = new KeyHandler();
+        gameLoop = new GameLoop(frame,this, keyHandler);
         this.setBackground(Color.black);
         this.setPreferredSize(new Dimension(width, height));
-        this.addKeyListener(keyInput);
+        this.addKeyListener(keyHandler);
         this.setFocusable(true);
     }
 

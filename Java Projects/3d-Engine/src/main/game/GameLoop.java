@@ -1,6 +1,6 @@
 package main.game;
 
-import main.game.keyinput.KeyInput;
+import main.game.keyinput.KeyHandler;
 import main.game.window.Frame;
 import main.game.window.Panel;
 
@@ -18,14 +18,14 @@ public class GameLoop extends Thread {
     private boolean running = false;
     private Frame frame;
     private Panel panel;
-    private KeyInput keyInput;
+    private KeyHandler keyHandler;
     private World world;
 
-    public GameLoop(Frame frame, Panel panel, KeyInput keyInput) {
+    public GameLoop(Frame frame, Panel panel, KeyHandler keyHandler) {
         this.panel = panel;
         this.world = new World(frame,panel);
         this.frame = frame;
-        this.keyInput = keyInput;
+        this.keyHandler = keyHandler;
     }
 
     /**
