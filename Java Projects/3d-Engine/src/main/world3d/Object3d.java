@@ -1,8 +1,8 @@
-package main.game.world3d;
+package main.world3d;
 
-import main.game.math.Point3d;
-import main.game.math.Vector;
-import main.game.world3d.mesh.Mesh;
+import main.math.Point3d;
+import main.math.Vector;
+import main.mesh.Mesh;
 
 public abstract class Object3d {
 

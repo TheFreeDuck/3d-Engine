@@ -1,11 +1,11 @@
-package main.game.world3d.entity;
+package main.world3d.entity;
 
 import main.game.keyinput.Keys;
 import main.game.window.Panel;
-import main.game.math.Point3d;
-import main.game.math.Vector;
-import main.game.world3d.Orientation;
-import main.game.world3d.entity.camera.Camera;
+import main.math.Point3d;
+import main.math.Vector;
+import main.world3d.Orientation;
+import main.world3d.entity.camera.Camera;
 
 public class Player extends Entity {
     private Vector movement;

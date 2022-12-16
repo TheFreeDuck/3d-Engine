@@ -1,10 +1,10 @@
-package main.game.world3d.mesh.standardmeshes;
+package main.mesh.standardmeshes;
 
-import main.game.math.Point3d;
-import main.game.math.Vertex;
-import main.game.world3d.mesh.Edge;
-import main.game.world3d.mesh.Mesh;
-import main.game.world3d.mesh.Triangle;
+import main.math.Point3d;
+import main.mesh.Vertex;
+import main.mesh.Edge;
+import main.mesh.Mesh;
+import main.mesh.Triangle;
 
 public class CuboidMesh extends Mesh {
     double width, height, length;

@@ -1,6 +1,6 @@
-package main.game.math;
+package main.math;
 
-import main.game.world3d.shapes.Rectangle;
+import main.world3d.shapes.Rectangle;
 
 /**
  * @author Fredrik

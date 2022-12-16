@@ -1,4 +1,6 @@
-package main.game.math;
+package main.mesh;
+
+import main.math.Point3d;
 
 import java.util.ArrayList;
 

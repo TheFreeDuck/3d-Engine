@@ -1,5 +1,7 @@
 package main;
 
+import main.game.UpdateCheck;
+
 /**
  * @author fredrik.cewersbredbe
  */

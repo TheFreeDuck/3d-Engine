@@ -1,11 +1,11 @@
-package main.game.world3d.entity.camera;
+package main.world3d.entity.camera;
 
-import main.game.math.Point2d;
-import main.game.math.Point3d;
-import main.game.math.Vector;
+import main.math.Point2d;
+import main.math.Point3d;
+import main.math.Vector;
 import main.game.window.Panel;
-import main.game.world3d.Orientation;
-import main.game.world3d.shapes.Rectangle;
+import main.world3d.Orientation;
+import main.world3d.shapes.Rectangle;
 
 public class PicturePlane extends Rectangle {
     private double aspectRatio;

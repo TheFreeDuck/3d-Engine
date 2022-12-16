@@ -1,4 +1,4 @@
-package main.game.world3d.mesh;
+package main.mesh;
 
 public class Edge {
 

@@ -1,7 +1,6 @@
-package main.game.world3d.mesh;
+package main.mesh;
 
-import main.game.math.Point2d;
-import main.game.math.Vertex;
+import main.math.Point2d;
 
 import java.awt.*;
 import java.util.ArrayList;

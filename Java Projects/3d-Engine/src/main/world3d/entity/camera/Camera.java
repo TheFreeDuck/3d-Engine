@@ -1,12 +1,13 @@
-package main.game.world3d.entity.camera;
+package main.world3d.entity.camera;
 
-import main.game.math.*;
+import main.math.*;
 import main.game.window.Panel;
-import main.game.world3d.Object3d;
-import main.game.world3d.Orientation;
-import main.game.world3d.mesh.Edge;
-import main.game.world3d.mesh.Mesh;
-import main.game.world3d.shapes.Rectangle;
+import main.world3d.Object3d;
+import main.world3d.Orientation;
+import main.mesh.Edge;
+import main.mesh.Mesh;
+import main.mesh.Vertex;
+import main.world3d.shapes.Rectangle;
 
 import java.awt.*;
 import java.util.ArrayList;

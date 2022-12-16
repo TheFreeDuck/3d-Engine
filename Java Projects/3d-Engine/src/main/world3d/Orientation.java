@@ -1,6 +1,6 @@
-package main.game.world3d;
+package main.world3d;
 
-import main.game.math.Vector;
+import main.math.Vector;
 
 public class Orientation {
     private Vector forward;

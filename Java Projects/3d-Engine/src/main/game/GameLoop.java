@@ -3,6 +3,7 @@ package main.game;
 import main.game.keyinput.KeyInput;
 import main.game.window.Frame;
 import main.game.window.Panel;
+import main.game.world.World;
 
 import java.awt.*;
 

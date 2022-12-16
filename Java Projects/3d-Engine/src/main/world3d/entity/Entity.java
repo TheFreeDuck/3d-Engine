@@ -1,8 +1,8 @@
-package main.game.world3d.entity;
+package main.world3d.entity;
 
-import main.game.world3d.Object3d;
-import main.game.world3d.Orientation;
-import main.game.math.Point3d;
+import main.world3d.Object3d;
+import main.world3d.Orientation;
+import main.math.Point3d;
 
 public abstract class Entity extends Object3d {
 

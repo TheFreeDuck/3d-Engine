@@ -1,14 +1,14 @@
-package main.game;
+package main.game.world;
 
 import main.game.keyinput.Keys;
-import main.game.math.Point3d;
-import main.game.math.Vector;
-import main.game.math.Vertex;
+import main.math.Point3d;
+import main.math.Vector;
+import main.mesh.Vertex;
 import main.game.window.Frame;
 import main.game.window.Panel;
-import main.game.world3d.Orientation;
-import main.game.world3d.entity.Player;
-import main.game.world3d.shapes.Cuboid;
+import main.world3d.Orientation;
+import main.world3d.entity.Player;
+import main.world3d.shapes.Cuboid;
 
 import java.awt.*;
 

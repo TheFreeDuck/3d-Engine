@@ -1,4 +1,4 @@
-package main.game.math;
+package main.math;
 
 /**
  * @author Fredrik

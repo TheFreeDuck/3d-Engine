@@ -1,6 +1,6 @@
-package main.game.world3d.shapes;
+package main.world3d.shapes;
 
-import main.game.math.Vertex;
+import main.mesh.Vertex;
 
 public class Line {
     Vertex vtx1;

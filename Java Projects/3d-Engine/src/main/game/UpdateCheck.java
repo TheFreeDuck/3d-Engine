@@ -1,5 +1,6 @@
-package main;
+package main.game;
 
+import main.Main;
 import main.game.window.Frame;
 
 import javax.swing.*;

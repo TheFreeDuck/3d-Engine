@@ -1,8 +1,8 @@
-package main.game.world3d.shapes;
+package main.world3d.shapes;
 
-import main.game.math.Point2d;
-import main.game.math.Point3d;
-import main.game.math.Vertex;
+import main.math.Point2d;
+import main.math.Point3d;
+import main.mesh.Vertex;
 
 import java.awt.*;
 

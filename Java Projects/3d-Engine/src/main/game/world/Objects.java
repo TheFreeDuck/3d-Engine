@@ -1,9 +1,9 @@
-package main.game;
+package main.game.world;
+
+import main.mesh.Mesh;
+import main.world3d.Object3d;
 
 import java.util.ArrayList;
-
-import main.game.world3d.Object3d;
-import main.game.world3d.mesh.Mesh;
 
 /**
  * @author Fredrik

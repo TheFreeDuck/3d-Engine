@@ -1,4 +1,6 @@
-package main.game.math;
+package main.math;
+
+import main.mesh.Vertex;
 
 /**
  *
