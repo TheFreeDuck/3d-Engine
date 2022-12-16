@@ -1,8 +1,8 @@
-.idea
-build
-META-INF
-nbproject
-out
-3d-Engine.iml
-build
-manifest.mf
+.idea/
+build/
+META-INF/
+nbproject/
+out/
+3d-Engine.iml/
+build/
+manifest.mf/
