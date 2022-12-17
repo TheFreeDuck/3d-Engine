@@ -1,0 +1,3 @@
+java Projects/Engine3d/.idea
+java Projects/Engine3d/out
+java Projects/Engine3d/Engine3d.iml
