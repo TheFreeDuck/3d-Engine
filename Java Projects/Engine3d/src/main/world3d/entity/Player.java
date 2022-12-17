@@ -1,7 +1,7 @@
 package main.world3d.entity;
 
 import main.game.keyinput.Keys;
-import main.game.window.Panel;
+import main.window.Panel;
 import main.math.Point3d;
 import main.math.Vector;
 import main.world3d.Orientation;

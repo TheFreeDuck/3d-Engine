@@ -1,7 +1,7 @@
 package main.game;
 
 import main.Main;
-import main.game.window.Frame;
+import main.window.Frame;
 
 import javax.swing.*;
 import java.awt.*;

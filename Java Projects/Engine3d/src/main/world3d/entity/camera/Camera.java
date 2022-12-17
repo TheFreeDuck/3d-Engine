@@ -1,7 +1,7 @@
 package main.world3d.entity.camera;
 
 import main.math.*;
-import main.game.window.Panel;
+import main.window.Panel;
 import main.world3d.Object3d;
 import main.world3d.Orientation;
 import main.mesh.Edge;

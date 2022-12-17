@@ -3,7 +3,7 @@ package main.world3d.entity.camera;
 import main.math.Point2d;
 import main.math.Point3d;
 import main.math.Vector;
-import main.game.window.Panel;
+import main.window.Panel;
 import main.world3d.Orientation;
 import main.world3d.shapes.Rectangle;
 

@@ -1,4 +1,4 @@
-package main.game.window;
+package main.window;
 
 import main.game.GameLoop;
 import main.game.keyinput.KeyHandler;
