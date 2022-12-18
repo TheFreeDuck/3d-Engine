@@ -2,3 +2,9 @@
 Java Projects/Engine3d/Engine3d.iml
 *.xml
 Java Projects/Engine3d/.idea/sonarlint/issuestore/index.pb
+Java Projects/Engine3d/out/production/Engine3d/META-INF/MANIFEST.MF
+Java Projects/Engine3d/out/production/Engine3d/res/META-INF/MANIFEST.MF
+java Projects/Engine3d/.idea/*
+java Projects/Engine3d/out/*
+java Projects/Engine3d/Engine3d.iml
+java Projects/Engine3d/text.txt
